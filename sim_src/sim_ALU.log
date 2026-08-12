@@ -1,0 +1,112 @@
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Wed Aug 12 19:45:46 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_ALU'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/AMDDesignTools/2025.2/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_ALU' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L uvm -prj tb_ALU_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.srcs/sources_1/imports/des_src/ALU.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.srcs/sim_1/imports/tb/tb_ALU.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_ALU
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_ALU_behav xil_defaultlib.tb_ALU xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2025.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/AMDDesignTools/2025.2/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_ALU_behav xil_defaultlib.tb_ALU xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.ALU
+Compiling module xil_defaultlib.tb_ALU
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_ALU_behav
+run_program: Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 1686.820 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '9' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_ALU_behav -key {Behavioral:sim_1:Functional:tb_ALU} -tclbatch {tb_ALU.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_ALU.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+
+========================================
+        ALU BLOCK VERIFICATION
+========================================
+
+PASS | A=0000000a B=00000014 CTRL=0000 | RESULT=0000001e Z=0 LT=0
+PASS | A=00000000 B=00000000 CTRL=0000 | RESULT=00000000 Z=1 LT=0
+PASS | A=ffffffff B=00000001 CTRL=0000 | RESULT=00000000 Z=1 LT=0
+PASS | A=7fffffff B=00000001 CTRL=0000 | RESULT=80000000 Z=0 LT=0
+PASS | A=00000014 B=0000000a CTRL=0001 | RESULT=0000000a Z=0 LT=0
+PASS | A=0000000a B=00000014 CTRL=0001 | RESULT=fffffff6 Z=0 LT=0
+PASS | A=00000005 B=00000005 CTRL=0001 | RESULT=00000000 Z=1 LT=0
+PASS | A=80000000 B=00000001 CTRL=0001 | RESULT=7fffffff Z=0 LT=1
+PASS | A=ffffffff B=aaaaaaaa CTRL=0010 | RESULT=aaaaaaaa Z=0 LT=0
+PASS | A=f0f0f0f0 B=0f0f0f0f CTRL=0010 | RESULT=00000000 Z=1 LT=0
+PASS | A=00000000 B=ffffffff CTRL=0010 | RESULT=00000000 Z=1 LT=0
+PASS | A=f0f0f0f0 B=0f0f0f0f CTRL=0011 | RESULT=ffffffff Z=0 LT=1
+PASS | A=00000000 B=00000000 CTRL=0011 | RESULT=00000000 Z=1 LT=0
+PASS | A=aaaaaaaa B=55555555 CTRL=0100 | RESULT=ffffffff Z=0 LT=1
+PASS | A=aaaaaaaa B=aaaaaaaa CTRL=0100 | RESULT=00000000 Z=1 LT=0
+PASS | A=00000001 B=00000001 CTRL=0101 | RESULT=00000002 Z=0 LT=0
+PASS | A=00000001 B=0000001f CTRL=0101 | RESULT=80000000 Z=0 LT=0
+PASS | A=ffffffff B=00000004 CTRL=0101 | RESULT=fffffff0 Z=0 LT=0
+PASS | A=12345678 B=00000000 CTRL=0101 | RESULT=12345678 Z=0 LT=0
+PASS | A=80000000 B=00000001 CTRL=0110 | RESULT=40000000 Z=0 LT=0
+PASS | A=ffffffff B=00000004 CTRL=0110 | RESULT=0fffffff Z=0 LT=1
+PASS | A=80000000 B=0000001f CTRL=0110 | RESULT=00000001 Z=0 LT=1
+PASS | A=80000000 B=00000001 CTRL=0111 | RESULT=c0000000 Z=0 LT=0
+PASS | A=80000000 B=00000004 CTRL=0111 | RESULT=f8000000 Z=0 LT=0
+PASS | A=ffffffff B=00000004 CTRL=0111 | RESULT=ffffffff Z=0 LT=1
+PASS | A=7fffffff B=00000001 CTRL=0111 | RESULT=3fffffff Z=0 LT=1
+PASS | A=00000005 B=0000000a CTRL=1000 | RESULT=00000001 Z=0 LT=1
+PASS | A=0000000a B=00000005 CTRL=1000 | RESULT=00000000 Z=1 LT=0
+PASS | A=ffffffff B=00000001 CTRL=1000 | RESULT=00000000 Z=1 LT=0
+PASS | A=00000001 B=ffffffff CTRL=1000 | RESULT=00000001 Z=0 LT=1
+PASS | A=ffffffff B=00000001 CTRL=1001 | RESULT=00000001 Z=0 LT=1
+PASS | A=00000001 B=ffffffff CTRL=1001 | RESULT=00000000 Z=1 LT=0
+PASS | A=80000000 B=00000000 CTRL=1001 | RESULT=00000001 Z=0 LT=1
+PASS | A=7fffffff B=80000000 CTRL=1001 | RESULT=00000000 Z=1 LT=0
+PASS | A=12345678 B=87654321 CTRL=1010 | RESULT=00000000 Z=1 LT=0
+PASS | A=ffffffff B=ffffffff CTRL=1111 | RESULT=00000000 Z=1 LT=0
+
+========================================
+ALU VERIFICATION COMPLETE
+PASS = 36
+FAIL = 0
+========================================
+
+******** ALU BLOCK PASSED ********
+$finish called at time : 36 ns : File "C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.srcs/sim_1/imports/tb/tb_ALU.sv" Line 198
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_ALU_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:18 . Memory (MB): peak = 1704.793 ; gain = 17.973
