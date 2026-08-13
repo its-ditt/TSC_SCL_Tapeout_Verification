@@ -19,15 +19,6 @@ module tb_RegFile_cov_asrt;
     logic [31:0] RD1;
     logic [31:0] RD2;
 
-
-    // ============================================================
-    // REFERENCE MODEL
-    // ============================================================
-
-    logic [31:0] model_reg [0:31];
-
-    integer i;
-
     integer assertion_failures;
 
 
@@ -72,94 +63,75 @@ module tb_RegFile_cov_asrt;
     covergroup regfile_coverage;
 
         // --------------------------------------------------------
-        // Read address 1
+        // Read Address 1
         // --------------------------------------------------------
 
         cp_A1 : coverpoint A1 {
 
-            bins X0 = {5'd0};
-
-            bins LOW_REGS = {[5'd1:5'd7]};
-
-            bins MID_REGS = {[5'd8:5'd23]};
-
-            bins HIGH_REGS = {[5'd24:5'd30]};
-
-            bins X31 = {5'd31};
+            bins X0     = {5'd0};
+            bins LOW    = {[5'd1:5'd7]};
+            bins MIDDLE = {[5'd8:5'd23]};
+            bins HIGH   = {[5'd24:5'd30]};
+            bins X31    = {5'd31};
 
         }
 
 
         // --------------------------------------------------------
-        // Read address 2
+        // Read Address 2
         // --------------------------------------------------------
 
         cp_A2 : coverpoint A2 {
 
-            bins X0 = {5'd0};
-
-            bins LOW_REGS = {[5'd1:5'd7]};
-
-            bins MID_REGS = {[5'd8:5'd23]};
-
-            bins HIGH_REGS = {[5'd24:5'd30]};
-
-            bins X31 = {5'd31};
+            bins X0     = {5'd0};
+            bins LOW    = {[5'd1:5'd7]};
+            bins MIDDLE = {[5'd8:5'd23]};
+            bins HIGH   = {[5'd24:5'd30]};
+            bins X31    = {5'd31};
 
         }
 
 
         // --------------------------------------------------------
-        // Write address
+        // Write Address
         // --------------------------------------------------------
 
         cp_A3 : coverpoint A3 {
 
-            bins X0 = {5'd0};
-
-            bins LOW_REGS = {[5'd1:5'd7]};
-
-            bins MID_REGS = {[5'd8:5'd23]};
-
-            bins HIGH_REGS = {[5'd24:5'd30]};
-
-            bins X31 = {5'd31};
+            bins X0     = {5'd0};
+            bins LOW    = {[5'd1:5'd7]};
+            bins MIDDLE = {[5'd8:5'd23]};
+            bins HIGH   = {[5'd24:5'd30]};
+            bins X31    = {5'd31};
 
         }
 
 
         // --------------------------------------------------------
-        // Write enable
+        // Write Enable
         // --------------------------------------------------------
 
         cp_WE3 : coverpoint WE3 {
 
-            bins WRITE_DISABLED = {1'b0};
-
-            bins WRITE_ENABLED = {1'b1};
+            bins DISABLED = {1'b0};
+            bins ENABLED  = {1'b1};
 
         }
 
 
         // --------------------------------------------------------
-        // Important write data patterns
+        // Write Data
         // --------------------------------------------------------
 
         cp_WD3 : coverpoint WD3 {
 
-            bins ZERO     = {32'h00000000};
-
-            bins ONE      = {32'h00000001};
-
-            bins ALL_ONES = {32'hFFFFFFFF};
-
-            bins MIN_NEG  = {32'h80000000};
-
-            bins MAX_POS  = {32'h7FFFFFFF};
-
-            bins AA       = {32'hAAAAAAAA};
-
-            bins 55       = {32'h55555555};
+            bins ZERO_VALUE    = {32'h00000000};
+            bins ONE_VALUE     = {32'h00000001};
+            bins ALL_ONES      = {32'hFFFFFFFF};
+            bins MIN_NEG       = {32'h80000000};
+            bins MAX_POS       = {32'h7FFFFFFF};
+            bins AA_PATTERN    = {32'hAAAAAAAA};
+            bins FIVE_PATTERN  = {32'h55555555};
 
             bins OTHER = default;
 
@@ -167,45 +139,37 @@ module tb_RegFile_cov_asrt;
 
 
         // --------------------------------------------------------
-        // Read data patterns
+        // Read Data 1
         // --------------------------------------------------------
 
         cp_RD1 : coverpoint RD1 {
 
-            bins ZERO     = {32'h00000000};
-
-            bins ONE      = {32'h00000001};
-
-            bins ALL_ONES = {32'hFFFFFFFF};
-
-            bins MIN_NEG  = {32'h80000000};
-
-            bins MAX_POS  = {32'h7FFFFFFF};
-
-            bins AA       = {32'hAAAAAAAA};
-
-            bins 55       = {32'h55555555};
+            bins ZERO_VALUE    = {32'h00000000};
+            bins ONE_VALUE     = {32'h00000001};
+            bins ALL_ONES      = {32'hFFFFFFFF};
+            bins MIN_NEG       = {32'h80000000};
+            bins MAX_POS       = {32'h7FFFFFFF};
+            bins AA_PATTERN    = {32'hAAAAAAAA};
+            bins FIVE_PATTERN  = {32'h55555555};
 
             bins OTHER = default;
 
         }
 
+
+        // --------------------------------------------------------
+        // Read Data 2
+        // --------------------------------------------------------
 
         cp_RD2 : coverpoint RD2 {
 
-            bins ZERO     = {32'h00000000};
-
-            bins ONE      = {32'h00000001};
-
-            bins ALL_ONES = {32'hFFFFFFFF};
-
-            bins MIN_NEG  = {32'h80000000};
-
-            bins MAX_POS  = {32'h7FFFFFFF};
-
-            bins AA       = {32'hAAAAAAAA};
-
-            bins 55       = {32'h55555555};
+            bins ZERO_VALUE    = {32'h00000000};
+            bins ONE_VALUE     = {32'h00000001};
+            bins ALL_ONES      = {32'hFFFFFFFF};
+            bins MIN_NEG       = {32'h80000000};
+            bins MAX_POS       = {32'h7FFFFFFF};
+            bins AA_PATTERN    = {32'hAAAAAAAA};
+            bins FIVE_PATTERN  = {32'h55555555};
 
             bins OTHER = default;
 
@@ -213,13 +177,12 @@ module tb_RegFile_cov_asrt;
 
 
         // --------------------------------------------------------
-        // Important relationship:
-        // write address == read address
+        // Write/Read Address Relationships
         // --------------------------------------------------------
 
-        write_read1_cross : cross cp_A3, cp_A1;
+        cross_A3_A1 : cross cp_A3, cp_A1;
 
-        write_read2_cross : cross cp_A3, cp_A2;
+        cross_A3_A2 : cross cp_A3, cp_A2;
 
     endgroup
 
@@ -228,192 +191,233 @@ module tb_RegFile_cov_asrt;
 
 
     // ============================================================
-    // ASSERTION 1
-    // x0 must always read zero
+    // ASSERTION CHECK TASK
     // ============================================================
 
-    always @(*) begin
+    task automatic check_assertions;
 
-        if (A1 == 5'd0) begin
+        begin
 
-            if (RD1 !== 32'h00000000) begin
+            // ----------------------------------------------------
+            // ASSERTION 1
+            // x0 must always read zero through RD1
+            // ----------------------------------------------------
 
-                $error(
-                    "ASSERTION FAILED: RD1/x0 != 0 | RD1=%h",
-                    RD1
-                );
+            if (A1 == 5'd0) begin
 
-                assertion_failures =
-                    assertion_failures + 1;
+                if (RD1 !== 32'h00000000) begin
+
+                    $error(
+                        "ASSERTION FAILED: RD1 x0 != 0 | RD1=%h",
+                        RD1
+                    );
+
+                    assertion_failures =
+                        assertion_failures + 1;
+
+                end
+
+            end
+
+
+            // ----------------------------------------------------
+            // ASSERTION 2
+            // x0 must always read zero through RD2
+            // ----------------------------------------------------
+
+            if (A2 == 5'd0) begin
+
+                if (RD2 !== 32'h00000000) begin
+
+                    $error(
+                        "ASSERTION FAILED: RD2 x0 != 0 | RD2=%h",
+                        RD2
+                    );
+
+                    assertion_failures =
+                        assertion_failures + 1;
+
+                end
+
+            end
+
+
+            // ----------------------------------------------------
+            // ASSERTION 3
+            // Same-cycle forwarding to RD1
+            // ----------------------------------------------------
+
+            if (
+                WE3 &&
+                (A3 == A1) &&
+                (A3 != 5'd0)
+            ) begin
+
+                if (RD1 !== WD3) begin
+
+                    $error(
+                        "ASSERTION FAILED: RD1 forwarding | A3=%0d WD3=%h RD1=%h",
+                        A3,
+                        WD3,
+                        RD1
+                    );
+
+                    assertion_failures =
+                        assertion_failures + 1;
+
+                end
+
+            end
+
+
+            // ----------------------------------------------------
+            // ASSERTION 4
+            // Same-cycle forwarding to RD2
+            // ----------------------------------------------------
+
+            if (
+                WE3 &&
+                (A3 == A2) &&
+                (A3 != 5'd0)
+            ) begin
+
+                if (RD2 !== WD3) begin
+
+                    $error(
+                        "ASSERTION FAILED: RD2 forwarding | A3=%0d WD3=%h RD2=%h",
+                        A3,
+                        WD3,
+                        RD2
+                    );
+
+                    assertion_failures =
+                        assertion_failures + 1;
+
+                end
 
             end
 
         end
 
-    end
-
-
-    always @(*) begin
-
-        if (A2 == 5'd0) begin
-
-            if (RD2 !== 32'h00000000) begin
-
-                $error(
-                    "ASSERTION FAILED: RD2/x0 != 0 | RD2=%h",
-                    RD2
-                );
-
-                assertion_failures =
-                    assertion_failures + 1;
-
-            end
-
-        end
-
-    end
-
-
-    // ============================================================
-    // ASSERTION 2
-    // Same-cycle forwarding on RD1
-    // ============================================================
-
-    always @(*) begin
-
-        if (
-            WE3 &&
-            (A3 == A1) &&
-            (A3 != 5'd0)
-        ) begin
-
-            if (RD1 !== WD3) begin
-
-                $error(
-                    "ASSERTION FAILED: RD1 forwarding | "
-                    "A3=%0d WD3=%h RD1=%h",
-                    A3,
-                    WD3,
-                    RD1
-                );
-
-                assertion_failures =
-                    assertion_failures + 1;
-
-            end
-
-        end
-
-    end
-
-
-    // ============================================================
-    // ASSERTION 3
-    // Same-cycle forwarding on RD2
-    // ============================================================
-
-    always @(*) begin
-
-        if (
-            WE3 &&
-            (A3 == A2) &&
-            (A3 != 5'd0)
-        ) begin
-
-            if (RD2 !== WD3) begin
-
-                $error(
-                    "ASSERTION FAILED: RD2 forwarding | "
-                    "A3=%0d WD3=%h RD2=%h",
-                    A3,
-                    WD3,
-                    RD2
-                );
-
-                assertion_failures =
-                    assertion_failures + 1;
-
-            end
-
-        end
-
-    end
-
-
-    // ============================================================
-    // ASSERTION 4
-    // x0 write must not affect read value
-    // ============================================================
-
-    always @(*) begin
-
-        if (
-            WE3 &&
-            (A3 == 5'd0)
-        ) begin
-
-            if (RD1 !== 32'h00000000) begin
-
-                $error(
-                    "ASSERTION FAILED: x0 write affected RD1 | "
-                    "RD1=%h",
-                    RD1
-                );
-
-                assertion_failures =
-                    assertion_failures + 1;
-
-            end
-
-        end
-
-    end
-
-
-    always @(*) begin
-
-        if (
-            WE3 &&
-            (A3 == 5'd0)
-        ) begin
-
-            if (RD2 !== 32'h00000000) begin
-
-                $error(
-                    "ASSERTION FAILED: x0 write affected RD2 | "
-                    "RD2=%h",
-                    RD2
-                );
-
-                assertion_failures =
-                    assertion_failures + 1;
-
-            end
-
-        end
-
-    end
+    endtask
 
 
     // ============================================================
     // SAMPLE COVERAGE
     // ============================================================
 
-    always @(*) begin
+    task automatic sample_coverage;
 
-        cov.sample();
+        begin
 
-    end
+            cov.sample();
+
+        end
+
+    endtask
 
 
     // ============================================================
-    // INITIAL TEST SEQUENCE
+    // WRITE TEST
+    // ============================================================
+
+    task automatic write_test;
+
+        input [4:0]  addr;
+        input [31:0] data;
+
+        begin
+
+            @(negedge clk);
+
+            A3  = addr;
+            WD3 = data;
+            WE3 = 1'b1;
+
+            #1;
+
+            sample_coverage;
+            check_assertions;
+
+            @(posedge clk);
+
+            #1;
+
+            WE3 = 1'b0;
+
+        end
+
+    endtask
+
+
+    // ============================================================
+    // READ TEST
+    // ============================================================
+
+    task automatic read_test;
+
+        input [4:0] addr1;
+        input [4:0] addr2;
+
+        begin
+
+            A1 = addr1;
+            A2 = addr2;
+
+            #1;
+
+            sample_coverage;
+            check_assertions;
+
+        end
+
+    endtask
+
+
+    // ============================================================
+    // FORWARDING TEST
+    // ============================================================
+
+    task automatic forwarding_test;
+
+        input [4:0]  addr;
+        input [31:0] data;
+
+        begin
+
+            @(negedge clk);
+
+            A3  = addr;
+            WD3 = data;
+            WE3 = 1'b1;
+
+            A1 = addr;
+            A2 = addr;
+
+            #1;
+
+            sample_coverage;
+            check_assertions;
+
+            @(posedge clk);
+
+            #1;
+
+            WE3 = 1'b0;
+
+        end
+
+    endtask
+
+
+    // ============================================================
+    // MAIN TEST
     // ============================================================
 
     initial begin
 
         // --------------------------------------------------------
-        // Initialize
+        // Initialization
         // --------------------------------------------------------
 
         rst = 1'b1;
@@ -439,12 +443,18 @@ module tb_RegFile_cov_asrt;
 
 
         // ========================================================
-        // RESET
+        // ASYNCHRONOUS RESET
         // ========================================================
 
         rst = 1'b0;
 
         #2;
+
+        A1 = 5'd0;
+        A2 = 5'd0;
+
+        sample_coverage;
+        check_assertions;
 
         rst = 1'b1;
 
@@ -455,193 +465,68 @@ module tb_RegFile_cov_asrt;
         // x0 READ
         // ========================================================
 
-        A1 = 5'd0;
-        A2 = 5'd0;
-
-        #2;
+        read_test(5'd0, 5'd0);
 
 
         // ========================================================
-        // BASIC WRITE
+        // BASIC DATA PATTERNS
         // ========================================================
 
-        @(negedge clk);
-
-        A3  = 5'd1;
-        WD3 = 32'h12345678;
-        WE3 = 1'b1;
-
-        @(posedge clk);
-
-        #1;
-
-        WE3 = 1'b0;
-
-        A1 = 5'd1;
-        A2 = 5'd0;
-
-        #2;
+        write_test(5'd1, 32'h00000000);
+        write_test(5'd2, 32'h00000001);
+        write_test(5'd3, 32'hFFFFFFFF);
+        write_test(5'd4, 32'h80000000);
+        write_test(5'd5, 32'h7FFFFFFF);
+        write_test(5'd6, 32'hAAAAAAAA);
+        write_test(5'd7, 32'h55555555);
 
 
         // ========================================================
-        // WRITE IMPORTANT DATA PATTERNS
+        // READ DATA
         // ========================================================
 
-        @(negedge clk);
-
-        A3  = 5'd2;
-        WD3 = 32'hAAAAAAAA;
-        WE3 = 1'b1;
-
-        @(posedge clk);
-
-        #1;
-
-        WE3 = 1'b0;
-
-
-        @(negedge clk);
-
-        A3  = 5'd3;
-        WD3 = 32'h55555555;
-        WE3 = 1'b1;
-
-        @(posedge clk);
-
-        #1;
-
-        WE3 = 1'b0;
-
-
-        @(negedge clk);
-
-        A3  = 5'd4;
-        WD3 = 32'hFFFFFFFF;
-        WE3 = 1'b1;
-
-        @(posedge clk);
-
-        #1;
-
-        WE3 = 1'b0;
-
-
-        @(negedge clk);
-
-        A3  = 5'd5;
-        WD3 = 32'h80000000;
-        WE3 = 1'b1;
-
-        @(posedge clk);
-
-        #1;
-
-        WE3 = 1'b0;
-
-
-        @(negedge clk);
-
-        A3  = 5'd6;
-        WD3 = 32'h7FFFFFFF;
-        WE3 = 1'b1;
-
-        @(posedge clk);
-
-        #1;
-
-        WE3 = 1'b0;
+        read_test(5'd1, 5'd2);
+        read_test(5'd3, 5'd4);
+        read_test(5'd5, 5'd6);
+        read_test(5'd7, 5'd7);
 
 
         // ========================================================
-        // READ BOTH PORTS
+        // RD1 / RD2 INDEPENDENCE
         // ========================================================
 
-        A1 = 5'd1;
-        A2 = 5'd2;
-
-        #2;
-
-
-        A1 = 5'd3;
-        A2 = 5'd4;
-
-        #2;
-
-
-        A1 = 5'd5;
-        A2 = 5'd6;
-
-        #2;
+        read_test(5'd1, 5'd7);
+        read_test(5'd7, 5'd1);
+        read_test(5'd3, 5'd5);
 
 
         // ========================================================
-        // SAME REGISTER ON BOTH READ PORTS
+        // RD1 FORWARDING
         // ========================================================
 
-        A1 = 5'd3;
-        A2 = 5'd3;
-
-        #2;
+        forwarding_test(
+            5'd10,
+            32'hCAFEBABE
+        );
 
 
         // ========================================================
-        // FORWARDING RD1
+        // RD2 FORWARDING
         // ========================================================
 
         @(negedge clk);
 
-        A3  = 5'd10;
-        WD3 = 32'hCAFEBABE;
-        WE3 = 1'b1;
-
-        A1 = 5'd10;
-        A2 = 5'd0;
-
-        #2;
-
-
-        // ========================================================
-        // FORWARDING RD2
-        // ========================================================
-
-        A1 = 5'd0;
-        A2 = 5'd10;
-
-        #2;
-
-
-        // ========================================================
-        // FORWARDING BOTH PORTS
-        // ========================================================
-
-        A1 = 5'd10;
-        A2 = 5'd10;
-
-        #2;
-
-
-        @(posedge clk);
-
-        #1;
-
-        WE3 = 1'b0;
-
-
-        // ========================================================
-        // x0 WRITE ATTEMPT
-        // ========================================================
-
-        @(negedge clk);
-
-        A3  = 5'd0;
+        A3  = 5'd11;
         WD3 = 32'hDEADBEEF;
         WE3 = 1'b1;
 
         A1 = 5'd0;
-        A2 = 5'd0;
+        A2 = 5'd11;
 
-        #2;
+        #1;
 
+        sample_coverage;
+        check_assertions;
 
         @(posedge clk);
 
@@ -651,66 +536,117 @@ module tb_RegFile_cov_asrt;
 
 
         // ========================================================
-        // x31
+        // BOTH READ PORTS FORWARDING
         // ========================================================
 
-        @(negedge clk);
+        forwarding_test(
+            5'd12,
+            32'hFACEFACE
+        );
 
-        A3  = 5'd31;
-        WD3 = 32'hFFFFFFFF;
-        WE3 = 1'b1;
 
-        @(posedge clk);
+        // ========================================================
+        // WRITE X0
+        //
+        // This must be ignored.
+        // We do NOT expect RD1/RD2 to become zero unless
+        // A1/A2 themselves are zero.
+        // ========================================================
 
-        #1;
+        // First establish a known value in x13
+        write_test(
+            5'd13,
+            32'h12345678
+        );
+
+        // Attempt to write x0
+        write_test(
+            5'd0,
+            32'hDEADBEEF
+        );
+
+        // x0 must still be zero
+        read_test(5'd0, 5'd0);
+
+        // x13 must remain unchanged
+        read_test(5'd13, 5'd13);
+
+
+        // ========================================================
+        // X31
+        // ========================================================
+
+        write_test(
+            5'd31,
+            32'hFFFFFFFF
+        );
+
+        read_test(
+            5'd31,
+            5'd31
+        );
+
+
+        // ========================================================
+        // RANDOM READ ACTIVITY
+        // ========================================================
 
         WE3 = 1'b0;
-
-        A1 = 5'd31;
-        A2 = 5'd31;
-
-        #2;
-
-
-        // ========================================================
-        // RANDOM STIMULUS
-        // ========================================================
 
         repeat (200) begin
 
             A1 = $urandom_range(0,31);
-
             A2 = $urandom_range(0,31);
-
-            A3 = $urandom_range(0,31);
-
-            WD3 = $urandom;
-
-            WE3 = $urandom_range(0,1);
 
             #1;
 
-            if (WE3) begin
-
-                @(posedge clk);
-
-                #1;
-
-            end
+            sample_coverage;
+            check_assertions;
 
         end
 
 
         // ========================================================
-        // FINAL x0 CHECK
+        // RANDOM WRITE + FORWARDING ACTIVITY
         // ========================================================
 
-        WE3 = 1'b0;
+        repeat (200) begin
+
+            @(negedge clk);
+
+            A3  = $urandom_range(0,31);
+            WD3 = $urandom;
+            WE3 = $urandom_range(0,1);
+
+            A1 = $urandom_range(0,31);
+            A2 = $urandom_range(0,31);
+
+            #1;
+
+            sample_coverage;
+            check_assertions;
+
+            @(posedge clk);
+
+            #1;
+
+            WE3 = 1'b0;
+
+        end
+
+
+        // ========================================================
+        // FINAL X0 CHECK
+        // ========================================================
 
         A1 = 5'd0;
         A2 = 5'd0;
+        WE3 = 1'b0;
 
-        #2;
+        #1;
+
+        sample_coverage;
+        check_assertions;
 
 
         // ========================================================
