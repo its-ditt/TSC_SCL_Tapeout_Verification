@@ -1,0 +1,31 @@
+ource tb_RegFile_cov_asrt.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+
+================================================
+ REGISTER FILE ASSERTION + COVERAGE TEST
+================================================
+
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_RegFile_cov_asrt_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1693.859 ; gain = 0.000
+run all
+
+================================================
+ REGISTER FILE VERIFICATION REPORT
+================================================
+Functional Coverage = 97.33%
+Assertion Failures = 0
+================================================
+
+******** ASSERTIONS PASSED ********
+
+$finish called at time : 2347 ns : File "C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.srcs/sim_1/imports/tb/tb_registerfile_cov_asrt.sv" Line 693

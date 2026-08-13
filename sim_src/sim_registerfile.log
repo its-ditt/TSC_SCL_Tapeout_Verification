@@ -1,0 +1,174 @@
+Command: launch_simulation 
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Thu Aug 13 19:48:17 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_RegFile'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/AMDDesignTools/2025.2/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_RegFile' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L uvm -prj tb_RegFile_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.srcs/sim_1/imports/tb/tb_registerfile.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_RegFile
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_RegFile_behav xil_defaultlib.tb_RegFile xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2025.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/AMDDesignTools/2025.2/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_RegFile_behav xil_defaultlib.tb_RegFile xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.registerfile
+Compiling module xil_defaultlib.tb_RegFile
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_RegFile_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_RegFile_behav -key {Behavioral:sim_1:Functional:tb_RegFile} -tclbatch {tb_RegFile.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_RegFile.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+
+==============================================
+       REGISTER FILE FUNCTIONAL TEST
+==============================================
+
+PASS RD1 | A1=0 | Data=00000000
+PASS RD2 | A2=0 | Data=00000000
+WRITE | x1 <= 12345678
+PASS RD1 | A1=1 | Data=12345678
+PASS RD2 | A2=0 | Data=00000000
+WRITE | x2 <= aaaaaaaa
+PASS RD1 | A1=1 | Data=12345678
+PASS RD2 | A2=2 | Data=aaaaaaaa
+WRITE | x5 <= 55555555
+WRITE | x10 <= aaaaaaaa
+WRITE | x15 <= ffffffff
+WRITE | x31 <= 80000000
+PASS RD1 | A1=5 | Data=55555555
+PASS RD2 | A2=10 | Data=aaaaaaaa
+PASS RD1 | A1=15 | Data=ffffffff
+PASS RD2 | A2=31 | Data=80000000
+WRITE | x0 <= deadbeef
+PASS RD1 | A1=0 | Data=00000000
+PASS RD2 | A2=1 | Data=12345678
+PASS RD1 | A1=5 | Data=55555555
+PASS RD2 | A2=5 | Data=55555555
+PASS RD1 | A1=1 | Data=12345678
+PASS RD2 | A2=2 | Data=aaaaaaaa
+PASS RD1 | A1=5 | Data=55555555
+PASS RD2 | A2=10 | Data=aaaaaaaa
+PASS RD1 | A1=15 | Data=ffffffff
+PASS RD2 | A2=31 | Data=80000000
+WRITE | x7 <= 11111111
+PASS RD1 | A1=7 | Data=11111111
+PASS RD2 | A2=7 | Data=11111111
+WRITE | x7 <= 22222222
+PASS RD1 | A1=7 | Data=22222222
+PASS RD2 | A2=7 | Data=22222222
+WRITE | x7 <= ffffffff
+PASS RD1 | A1=7 | Data=ffffffff
+PASS RD2 | A2=7 | Data=ffffffff
+PASS FORWARD RD1 | Data=cafebabe
+PASS FORWARD RD2 | Data=cafebabe
+WRITE | x1 <= 10000001
+WRITE | x2 <= 10000002
+WRITE | x3 <= 10000003
+WRITE | x4 <= 10000004
+WRITE | x5 <= 10000005
+WRITE | x6 <= 10000006
+WRITE | x7 <= 10000007
+WRITE | x8 <= 10000008
+WRITE | x9 <= 10000009
+WRITE | x10 <= 1000000a
+WRITE | x11 <= 1000000b
+WRITE | x12 <= 1000000c
+WRITE | x13 <= 1000000d
+WRITE | x14 <= 1000000e
+WRITE | x15 <= 1000000f
+WRITE | x16 <= 10000010
+WRITE | x17 <= 10000011
+WRITE | x18 <= 10000012
+WRITE | x19 <= 10000013
+WRITE | x20 <= 10000014
+WRITE | x21 <= 10000015
+WRITE | x22 <= 10000016
+WRITE | x23 <= 10000017
+WRITE | x24 <= 10000018
+WRITE | x25 <= 10000019
+WRITE | x26 <= 1000001a
+WRITE | x27 <= 1000001b
+WRITE | x28 <= 1000001c
+WRITE | x29 <= 1000001d
+WRITE | x30 <= 1000001e
+WRITE | x31 <= 1000001f
+PASS x0 | Data=00000000
+PASS x1 | Data=10000001
+PASS x2 | Data=10000002
+PASS x3 | Data=10000003
+PASS x4 | Data=10000004
+PASS x5 | Data=10000005
+PASS x6 | Data=10000006
+PASS x7 | Data=10000007
+PASS x8 | Data=10000008
+PASS x9 | Data=10000009
+PASS x10 | Data=1000000a
+PASS x11 | Data=1000000b
+PASS x12 | Data=1000000c
+PASS x13 | Data=1000000d
+PASS x14 | Data=1000000e
+PASS x15 | Data=1000000f
+PASS x16 | Data=10000010
+PASS x17 | Data=10000011
+PASS x18 | Data=10000012
+PASS x19 | Data=10000013
+PASS x20 | Data=10000014
+PASS x21 | Data=10000015
+PASS x22 | Data=10000016
+PASS x23 | Data=10000017
+PASS x24 | Data=10000018
+PASS x25 | Data=10000019
+PASS x26 | Data=1000001a
+PASS x27 | Data=1000001b
+PASS x28 | Data=1000001c
+PASS x29 | Data=1000001d
+PASS x30 | Data=1000001e
+PASS x31 | Data=1000001f
+PASS X0 FINAL | RD1=00000000 RD2=00000000
+
+==============================================
+       REGISTER FILE VERIFICATION COMPLETE
+==============================================
+PASS = 61
+FAIL = 0
+==============================================
+
+******** REGISTER FILE PASSED ********
+
+$finish called at time : 469 ns : File "C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.srcs/sim_1/imports/tb/tb_registerfile.sv" Line 529
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_RegFile_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 3186.824 ; gain = 18.445
