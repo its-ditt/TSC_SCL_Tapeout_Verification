@@ -1,0 +1,43 @@
+source tb_decode_stage_cov_asrt.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+
+================================================
+ DECODE STAGE VERIFICATION
+================================================
+
+Running directed RV32I edge cases...
+Testing register-file writeback forwarding...
+Testing StallD...
+Testing FlushD...
+Testing FlushD + StallD priority...
+
+Running 2000 random RV32I decode tests...
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_decode_stage_cov_asrt_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:03 ; elapsed = 00:00:09 . Memory (MB): peak = 1766.098 ; gain = 0.000
+run all
+
+Running 500 random StallD/FlushD tests...
+
+================================================
+ DECODE STAGE VERIFICATION REPORT
+================================================
+Total Tests        = 2538
+Passed             = 2538
+Failed             = 0
+Assertion Failures = 0
+Functional Coverage = 96.59%
+================================================
+
+******** DECODE STAGE VERIFICATION PASSED ********
+
+$finish called at time : 25416 ns : File "C:/Users/dell/Desktop/VLSI/Verilog_vivado/For Git/tsc_scl_workbench/tsc_scl_workbench.srcs/sim_1/new/tb_sign_extend.sv" Line 2428
