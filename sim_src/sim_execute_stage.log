@@ -1,0 +1,59 @@
+source tb_Execute_stage_cov_asrt.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+
+================================================
+      EXECUTE STAGE EDGE CASE VERIFICATION
+================================================
+
+Testing ADD edge cases...
+Testing SUB edge cases...
+Testing logical operations...
+Testing shift boundaries...
+Testing forwarding paths...
+Testing ALU source-A selection...
+Testing immediate source-B selection...
+Testing BEQ taken...
+Testing BEQ not taken...
+Testing BNE taken...
+Testing BLTU...
+Testing SLT signed boundary...
+Testing jump target...
+Testing jump target LSB clearing...
+Testing FlushE...
+Testing normal EX/MEM capture...
+Testing StallE...
+Testing FlushE + StallE priority...
+
+================================================
+        2000 RANDOM EX STAGE TESTS
+================================================
+
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_Execute_stage_cov_asrt_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 2127.723 ; gain = 0.000
+run all
+
+================================================
+       EXECUTE STAGE VERIFICATION REPORT
+================================================
+Edge Case Tests     = 25
+Random Tests        = 2000
+Total Checks        = 2025
+Scoreboard Passes   = 2004
+Failures            = 0
+Assertion Failures  = 0
+Functional Coverage = 100.00%
+================================================
+
+******** EXECUTE STAGE VERIFICATION PASSED ********
+
+$finish called at time : 20066 ns : File "C:/scl_tsc/tb/tb_execute_stage.sv" Line 1772

@@ -69,8 +69,7 @@ module tb_ALU_random_2000;
             if (ALUResult !== expected) begin
 
                 $display(
-                    "FAIL | Test=%0d | Op=%b | A=%h | B=%h | "
-                    "Expected=%h | Got=%h",
+                    "FAIL | Test=%0d | Op=%b | A=%h | B=%h | Expected=%h | Got=%h",
                     test_count,
                     operation,
                     a,
@@ -96,8 +95,7 @@ module tb_ALU_random_2000;
             if (zeroE !== (expected == 32'h00000000)) begin
 
                 $display(
-                    "ZERO FLAG FAIL | Test=%0d | Op=%b | "
-                    "Result=%h | zeroE=%b",
+                    "ZERO FLAG FAIL | Test=%0d | Op=%b | Result=%h | zeroE=%b",
                     test_count,
                     operation,
                     ALUResult,
