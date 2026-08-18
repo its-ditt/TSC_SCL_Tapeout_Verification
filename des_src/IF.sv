@@ -94,13 +94,20 @@ Pc_adder pc_adder(
     .PcF_4(PcPlus4F)
 
 );
-
+//STALLM check
+logic StallF_reg;
+logic [31:0] sINSTR;
 always_ff @(posedge clk or negedge rst)
 begin
     if(!rst)
         PcSrcE_delay <= 1'b0;
-    else
+    else begin
         PcSrcE_delay <= PcSrcE;
+        StallF_reg   <= StallF;   
+    end
+    
+    if(StallF && (~StallF_reg))
+        sINSTR <= InstrF;
 end
 //////////////////////////////////////////////////////
 // IF/ID Pipeline Register
@@ -112,10 +119,10 @@ begin
     if(!rst)
     begin
 
-        InstrD   <= 32'h00000013; // NOP
-        PcD      <= 32'd0;
-        PcPlus4D <= 32'd4;
-        PcD_delay<= 32'd0;
+        InstrD         <= 32'h00000013; // NOP
+        PcD            <= 32'd0;
+        PcPlus4D       <= 32'd4;
+        PcD_delay      <= 32'd0;
         PcPlus4D_delay <= 32'd0;
     end
 
@@ -135,19 +142,41 @@ else if(FlushIF)
     end
 
     //////////////////////////////////////////////////
-    // Normal update
+    // Stall -> hold current values
     //////////////////////////////////////////////////
 
-    else// if(!StallF)
+    else if(StallF)
     begin
 
+        InstrD         <= InstrD;
+        PcD_delay      <= PcD_delay;
+        PcPlus4D_delay <= PcPlus4D_delay;
+        PcD            <= PcD;
+        PcPlus4D       <= PcPlus4D;
+    end
+    
+    //////////////////////////////////////////////////
+    // Normal update
+    ////////////////////////////////////////////////// 
+    
+    else if ((~StallF) && StallF_reg)
+    begin
+        InstrD <= sINSTR;
+        PcD_delay      <= PCF;
+        PcPlus4D_delay <= PcPlus4F;
+        PcD            <= PcD_delay;
+        PcPlus4D       <= PcPlus4D_delay;
+    end
+    else
+    begin
         InstrD         <= InstrF;
         PcD_delay      <= PCF;
         PcPlus4D_delay <= PcPlus4F;
         PcD            <= PcD_delay;
         PcPlus4D       <= PcPlus4D_delay;
     end
-
+        
+        
     //////////////////////////////////////////////////
     // Stall -> hold current values
     //////////////////////////////////////////////////
