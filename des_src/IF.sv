@@ -123,7 +123,7 @@ begin
         PcD            <= 32'd0;
         PcPlus4D       <= 32'd4;
         PcD_delay      <= 32'd0;
-        PcPlus4D_delay <= 32'd0;
+        PcPlus4D_delay <= 32'd4;
     end
 
     //////////////////////////////////////////////////
@@ -138,7 +138,7 @@ else if(FlushIF)
         PcD            <= 32'd0;
         PcPlus4D       <= 32'd4;
         PcD_delay      <= 32'd0;
-        PcPlus4D_delay <= 32'd0;    
+        PcPlus4D_delay <= 32'd4;    
     end
 
     //////////////////////////////////////////////////

@@ -1,0 +1,3059 @@
+log 19/08/2026 iteration 3
+
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Wed Aug 19 19:19:35 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_IF_cov_asrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/iitm_bs/tsc_scl_verification/tsc_scl_verification.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/AMDDesignTools/2025.2/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_IF_cov_asrt' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/iitm_bs/tsc_scl_verification/tsc_scl_verification.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L uvm -prj tb_IF_cov_asrt_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/IF.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IF
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/MUX_2_1.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MUX_2_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/Pc_Module.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Pc_Module
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/Pc_adder.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Pc_adder
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/inst_memory.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module inst_memory
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_IF_cov_asrt
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/iitm_bs/tsc_scl_verification/tsc_scl_verification.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_IF_cov_asrt_behav xil_defaultlib.tb_IF_cov_asrt xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2025.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/AMDDesignTools/2025.2/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_IF_cov_asrt_behav xil_defaultlib.tb_IF_cov_asrt xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.MUX_2_1
+Compiling module xil_defaultlib.Pc_Module
+Compiling module xil_defaultlib.inst_memory
+Compiling module xil_defaultlib.Pc_adder
+Compiling module xil_defaultlib.IF
+Compiling module xil_defaultlib.tb_IF_cov_asrt
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_IF_cov_asrt_behav
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:08 . Memory (MB): peak = 3359.527 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '8' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/iitm_bs/tsc_scl_verification/tsc_scl_verification.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_IF_cov_asrt_behav -key {Behavioral:sim_1:Functional:tb_IF_cov_asrt} -tclbatch {tb_IF_cov_asrt.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_IF_cov_asrt.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+
+================================================
+           IF STAGE VERIFICATION
+   SYNCHRONOUS SRAM / TWO-CYCLE FETCH MODEL
+================================================
+
+Testing sequential synchronous fetch...
+
+IF SCOREBOARD FAILURE
+Time = 27000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000000 VALID=0
+Testing one-cycle stall...
+
+IF SCOREBOARD FAILURE
+Time = 167000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000000 VALID=0
+
+IF SCOREBOARD FAILURE
+Time = 177000
+StallF=1 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000000 VALID=0
+
+IF SCOREBOARD FAILURE
+Time = 187000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00100093 GOT=00200113
+PcD      EXP=00000000 GOT=00000004
+PcPlus4D EXP=00000004 GOT=00000008
+EXP INSTR-PC=00000000 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 197000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00200113 GOT=00300193
+PcD      EXP=00000004 GOT=00000008
+PcPlus4D EXP=00000008 GOT=0000000c
+EXP INSTR-PC=00000004 VALID=1
+Testing multi-cycle stall...
+
+IF SCOREBOARD FAILURE
+Time = 257000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000000 VALID=0
+Testing stall-release instruction/PC association...
+
+IF SCOREBOARD FAILURE
+Time = 317000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000000 VALID=0
+
+IF SCOREBOARD FAILURE
+Time = 327000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00100093 GOT=00200113
+PcD      EXP=00000000 GOT=00000004
+PcPlus4D EXP=00000004 GOT=00000008
+EXP INSTR-PC=00000000 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 337000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00200113 GOT=00300193
+PcD      EXP=00000004 GOT=00000008
+PcPlus4D EXP=00000008 GOT=0000000c
+EXP INSTR-PC=00000004 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 347000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00300193 GOT=00400213
+PcD      EXP=00000008 GOT=0000000c
+PcPlus4D EXP=0000000c GOT=00000010
+EXP INSTR-PC=00000008 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 357000
+StallF=1 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00300193 GOT=00400213
+PcD      EXP=00000008 GOT=0000000c
+PcPlus4D EXP=0000000c GOT=00000010
+EXP INSTR-PC=00000008 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 367000
+StallF=1 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00300193 GOT=00400213
+PcD      EXP=00000008 GOT=0000000c
+PcPlus4D EXP=0000000c GOT=00000010
+EXP INSTR-PC=00000008 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 377000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00400213 GOT=00500293
+PcD      EXP=0000000c GOT=00000010
+PcPlus4D EXP=00000010 GOT=00000014
+EXP INSTR-PC=0000000c VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 387000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00500293 GOT=00600313
+PcD      EXP=00000010 GOT=00000014
+PcPlus4D EXP=00000014 GOT=00000018
+EXP INSTR-PC=00000010 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 397000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00600313 GOT=00700393
+PcD      EXP=00000014 GOT=00000018
+PcPlus4D EXP=00000018 GOT=0000001c
+EXP INSTR-PC=00000014 VALID=1
+Testing redirect and delayed flush...
+
+IF SCOREBOARD FAILURE
+Time = 427000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000000 VALID=0
+
+IF SCOREBOARD FAILURE
+Time = 437000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00100093 GOT=00200113
+PcD      EXP=00000000 GOT=00000004
+PcPlus4D EXP=00000004 GOT=00000008
+EXP INSTR-PC=00000000 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 447000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00200113 GOT=00300193
+PcD      EXP=00000004 GOT=00000008
+PcPlus4D EXP=00000008 GOT=0000000c
+EXP INSTR-PC=00000004 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 457000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00300193 GOT=00400213
+PcD      EXP=00000008 GOT=0000000c
+PcPlus4D EXP=0000000c GOT=00000010
+EXP INSTR-PC=00000008 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 487000
+StallF=0 PcSrcE=0 PcTargetE=00000040
+InstrD   EXP=10100093 GOT=10100093
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000040 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 487 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+Testing back-to-back redirects...
+
+IF SCOREBOARD FAILURE
+Time = 587000
+StallF=0 PcSrcE=0 PcTargetE=00000080
+InstrD   EXP=20100093 GOT=20100093
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000080 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 587 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+Testing StallF + PcSrcE interaction...
+
+IF SCOREBOARD FAILURE
+Time = 657000
+StallF=0 PcSrcE=0 PcTargetE=00000080
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000000 VALID=0
+
+IF SCOREBOARD FAILURE
+Time = 667000
+StallF=0 PcSrcE=0 PcTargetE=00000080
+InstrD   EXP=00100093 GOT=00200113
+PcD      EXP=00000000 GOT=00000004
+PcPlus4D EXP=00000004 GOT=00000008
+EXP INSTR-PC=00000000 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 677000
+StallF=0 PcSrcE=0 PcTargetE=00000080
+InstrD   EXP=00200113 GOT=00300193
+PcD      EXP=00000004 GOT=00000008
+PcPlus4D EXP=00000008 GOT=0000000c
+EXP INSTR-PC=00000004 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 707000
+StallF=0 PcSrcE=0 PcTargetE=00000080
+InstrD   EXP=00300193 GOT=00400213
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000008 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 707 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 717000
+StallF=0 PcSrcE=0 PcTargetE=00000080
+InstrD   EXP=00400213 GOT=00500293
+PcD      EXP=0000000c GOT=00000010
+PcPlus4D EXP=00000010 GOT=00000014
+EXP INSTR-PC=0000000c VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 727000
+StallF=0 PcSrcE=0 PcTargetE=00000080
+InstrD   EXP=00500293 GOT=00600313
+PcD      EXP=00000010 GOT=00000014
+PcPlus4D EXP=00000014 GOT=00000018
+EXP INSTR-PC=00000010 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 737000
+StallF=0 PcSrcE=0 PcTargetE=00000080
+InstrD   EXP=00600313 GOT=00700393
+PcD      EXP=00000014 GOT=00000018
+PcPlus4D EXP=00000018 GOT=0000001c
+EXP INSTR-PC=00000014 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 747000
+StallF=0 PcSrcE=0 PcTargetE=00000080
+InstrD   EXP=00700393 GOT=00800413
+PcD      EXP=00000018 GOT=0000001c
+PcPlus4D EXP=0000001c GOT=00000020
+EXP INSTR-PC=00000018 VALID=1
+Running 2000 random IF scenarios...
+
+IF SCOREBOARD FAILURE
+Time = 817000
+StallF=0 PcSrcE=0 PcTargetE=00000294
+InstrD   EXP=00100093 GOT=00100093
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000000 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 857000
+StallF=0 PcSrcE=0 PcTargetE=0000001c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000005c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 857 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 897000
+StallF=0 PcSrcE=0 PcTargetE=000003a8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002ec VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 897 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 947000
+StallF=0 PcSrcE=0 PcTargetE=000002f0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000264 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 947 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_IF_cov_asrt_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:03 ; elapsed = 00:00:12 . Memory (MB): peak = 3359.527 ; gain = 0.000
+run all
+
+IF SCOREBOARD FAILURE
+Time = 1087000
+StallF=0 PcSrcE=0 PcTargetE=0000026c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001a8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1087 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 1217000
+StallF=0 PcSrcE=0 PcTargetE=000000a0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000078 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1217 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 1227000
+StallF=1 PcSrcE=0 PcTargetE=000000f8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000078 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1227 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 1237000
+StallF=1 PcSrcE=0 PcTargetE=00000350
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000078 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1237 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 1267000
+StallF=0 PcSrcE=0 PcTargetE=0000004c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000005c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1267 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 1347000
+StallF=0 PcSrcE=0 PcTargetE=00000024
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000016c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1347 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 1427000
+StallF=0 PcSrcE=0 PcTargetE=000002c4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000174 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1427 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 1487000
+StallF=0 PcSrcE=0 PcTargetE=000002cc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000036c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1487 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 1567000
+StallF=0 PcSrcE=0 PcTargetE=000002e8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000188 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1567 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 1747000
+StallF=0 PcSrcE=0 PcTargetE=00000278
+InstrD   EXP=20100093 GOT=20100093
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000080 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1747 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 1757000
+StallF=1 PcSrcE=0 PcTargetE=00000290
+InstrD   EXP=20100093 GOT=20100093
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000080 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1757 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 1767000
+StallF=1 PcSrcE=0 PcTargetE=00000188
+InstrD   EXP=20100093 GOT=20100093
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000080 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1767 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 1797000
+StallF=0 PcSrcE=0 PcTargetE=000002f4
+InstrD   EXP=20300193 GOT=20300193
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000088 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1797 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 1807000
+StallF=1 PcSrcE=0 PcTargetE=000000e8
+InstrD   EXP=20300193 GOT=20300193
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000088 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1807 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 1817000
+StallF=1 PcSrcE=0 PcTargetE=00000168
+InstrD   EXP=20300193 GOT=20300193
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000088 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 1817 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 2067000
+StallF=0 PcSrcE=0 PcTargetE=00000054
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000168 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 2067 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 2267000
+StallF=0 PcSrcE=0 PcTargetE=00000238
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002e8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 2267 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 2597000
+StallF=0 PcSrcE=0 PcTargetE=0000031c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001a0 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 2597 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 2667000
+StallF=0 PcSrcE=0 PcTargetE=000003d4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002dc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 2667 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 2677000
+StallF=1 PcSrcE=0 PcTargetE=00000384
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002dc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 2677 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 2687000
+StallF=1 PcSrcE=0 PcTargetE=00000264
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002dc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 2687 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 2737000
+StallF=0 PcSrcE=0 PcTargetE=000003bc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002e8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 2737 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 2887000
+StallF=0 PcSrcE=0 PcTargetE=000002f4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002c4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 2887 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3177000
+StallF=0 PcSrcE=0 PcTargetE=000001b0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003c4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3177 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3187000
+StallF=1 PcSrcE=0 PcTargetE=000000e8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003c4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3187 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3197000
+StallF=1 PcSrcE=0 PcTargetE=0000029c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003c4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3197 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3267000
+StallF=0 PcSrcE=0 PcTargetE=00000370
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000078 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3267 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3357000
+StallF=0 PcSrcE=0 PcTargetE=000003bc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002cc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3357 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3397000
+StallF=0 PcSrcE=0 PcTargetE=00000354
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000054 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3397 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3437000
+StallF=0 PcSrcE=0 PcTargetE=000003b8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001cc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3437 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3487000
+StallF=0 PcSrcE=0 PcTargetE=00000180
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000006c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3487 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3627000
+StallF=0 PcSrcE=0 PcTargetE=000002fc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000b0 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3627 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3757000
+StallF=0 PcSrcE=0 PcTargetE=000003a0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000398 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3757 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3767000
+StallF=1 PcSrcE=0 PcTargetE=000000b0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000398 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3767 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3777000
+StallF=1 PcSrcE=0 PcTargetE=00000020
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000398 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3777 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3807000
+StallF=0 PcSrcE=0 PcTargetE=00000254
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000bc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3807 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3887000
+StallF=0 PcSrcE=0 PcTargetE=0000025c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000028c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3887 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 3967000
+StallF=0 PcSrcE=0 PcTargetE=00000124
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000294 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 3967 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 4027000
+StallF=0 PcSrcE=0 PcTargetE=000002ac
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003bc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 4027 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 4107000
+StallF=0 PcSrcE=0 PcTargetE=00000278
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000398 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 4107 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 4287000
+StallF=0 PcSrcE=0 PcTargetE=000002a0
+InstrD   EXP=10100093 GOT=10100093
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000040 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 4287 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 4297000
+StallF=1 PcSrcE=0 PcTargetE=00000298
+InstrD   EXP=10100093 GOT=10100093
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000040 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 4297 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 4307000
+StallF=1 PcSrcE=0 PcTargetE=000000c0
+InstrD   EXP=10100093 GOT=10100093
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000040 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 4307 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 4337000
+StallF=0 PcSrcE=0 PcTargetE=000000d4
+InstrD   EXP=10300193 GOT=10300193
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000048 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 4337 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 4347000
+StallF=1 PcSrcE=0 PcTargetE=00000240
+InstrD   EXP=10300193 GOT=10300193
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000048 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 4347 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 4357000
+StallF=1 PcSrcE=0 PcTargetE=00000230
+InstrD   EXP=10300193 GOT=10300193
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000048 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 4357 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 4607000
+StallF=0 PcSrcE=0 PcTargetE=000002fc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000260 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 4607 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 4807000
+StallF=0 PcSrcE=0 PcTargetE=000003f0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000160 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 4807 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 5137000
+StallF=0 PcSrcE=0 PcTargetE=00000384
+InstrD   EXP=00300193 GOT=00300193
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000008 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 5137 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 5207000
+StallF=0 PcSrcE=0 PcTargetE=000000bc
+InstrD   EXP=10400213 GOT=10400213
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000004c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 5207 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 5217000
+StallF=1 PcSrcE=0 PcTargetE=000001c4
+InstrD   EXP=10400213 GOT=10400213
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000004c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 5217 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 5227000
+StallF=1 PcSrcE=0 PcTargetE=000003cc
+InstrD   EXP=10400213 GOT=10400213
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000004c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 5227 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 5277000
+StallF=0 PcSrcE=0 PcTargetE=0000004c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000058 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 5277 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 5427000
+StallF=0 PcSrcE=0 PcTargetE=00000214
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003bc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 5427 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 5717000
+StallF=0 PcSrcE=0 PcTargetE=00000328
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000194 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 5717 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 5727000
+StallF=1 PcSrcE=0 PcTargetE=00000338
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000194 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 5727 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 5737000
+StallF=1 PcSrcE=0 PcTargetE=00000394
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000194 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 5737 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 5807000
+StallF=0 PcSrcE=0 PcTargetE=00000068
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000178 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 5807 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 5897000
+StallF=0 PcSrcE=0 PcTargetE=00000264
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000026c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 5897 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 5937000
+StallF=0 PcSrcE=0 PcTargetE=0000014c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000002c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 5937 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 5977000
+StallF=0 PcSrcE=0 PcTargetE=000003a8
+InstrD   EXP=00400213 GOT=00400213
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000000c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 5977 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6027000
+StallF=0 PcSrcE=0 PcTargetE=00000130
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000154 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6027 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6167000
+StallF=0 PcSrcE=0 PcTargetE=0000006c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000218 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6167 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6297000
+StallF=0 PcSrcE=0 PcTargetE=00000340
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003f8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6297 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6307000
+StallF=1 PcSrcE=0 PcTargetE=00000388
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003f8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6307 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6317000
+StallF=1 PcSrcE=0 PcTargetE=000002b0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003f8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6317 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6347000
+StallF=0 PcSrcE=0 PcTargetE=000002bc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001dc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6347 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6427000
+StallF=0 PcSrcE=0 PcTargetE=000002f4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000022c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6427 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6507000
+StallF=0 PcSrcE=0 PcTargetE=00000364
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000234 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6507 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6567000
+StallF=0 PcSrcE=0 PcTargetE=0000020c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000012c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6567 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6647000
+StallF=0 PcSrcE=0 PcTargetE=00000148
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000148 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6647 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6827000
+StallF=0 PcSrcE=0 PcTargetE=00000148
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002a0 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6827 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6837000
+StallF=1 PcSrcE=0 PcTargetE=000000e0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002a0 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6837 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6847000
+StallF=1 PcSrcE=0 PcTargetE=00000098
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002a0 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6847 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6877000
+StallF=0 PcSrcE=0 PcTargetE=00000034
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002a8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6877 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6887000
+StallF=1 PcSrcE=0 PcTargetE=00000018
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002a8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6887 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 6897000
+StallF=1 PcSrcE=0 PcTargetE=00000318
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002a8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 6897 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 7147000
+StallF=0 PcSrcE=0 PcTargetE=00000104
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000338 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 7147 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 7347000
+StallF=0 PcSrcE=0 PcTargetE=000003e8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000338 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 7347 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 7677000
+StallF=0 PcSrcE=0 PcTargetE=0000006c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000110 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 7677 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 7747000
+StallF=0 PcSrcE=0 PcTargetE=00000104
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002fc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 7747 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 7757000
+StallF=1 PcSrcE=0 PcTargetE=00000064
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002fc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 7757 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 7767000
+StallF=1 PcSrcE=0 PcTargetE=000002b4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002fc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 7767 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 7817000
+StallF=0 PcSrcE=0 PcTargetE=000001fc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000308 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 7817 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 7967000
+StallF=0 PcSrcE=0 PcTargetE=00000354
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001b4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 7967 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 8257000
+StallF=0 PcSrcE=0 PcTargetE=00000160
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003c4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 8257 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 8267000
+StallF=1 PcSrcE=0 PcTargetE=000001e8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003c4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 8267 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 8277000
+StallF=1 PcSrcE=0 PcTargetE=0000016c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003c4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 8277 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 8347000
+StallF=0 PcSrcE=0 PcTargetE=000002a0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000098 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 8347 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 8437000
+StallF=0 PcSrcE=0 PcTargetE=0000018c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002cc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 8437 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 8477000
+StallF=0 PcSrcE=0 PcTargetE=00000084
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002e4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 8477 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 8517000
+StallF=0 PcSrcE=0 PcTargetE=000002f8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000032c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 8517 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 8567000
+StallF=0 PcSrcE=0 PcTargetE=00000380
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000011c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 8567 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 8707000
+StallF=0 PcSrcE=0 PcTargetE=0000003c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001e0 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 8707 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 8837000
+StallF=0 PcSrcE=0 PcTargetE=00000100
+InstrD   EXP=00700393 GOT=00700393
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000018 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 8837 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 8847000
+StallF=1 PcSrcE=0 PcTargetE=00000280
+InstrD   EXP=00700393 GOT=00700393
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000018 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 8847 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 8857000
+StallF=1 PcSrcE=0 PcTargetE=00000080
+InstrD   EXP=00700393 GOT=00700393
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000018 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 8857 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 8887000
+StallF=0 PcSrcE=0 PcTargetE=00000084
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000023c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 8887 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 8967000
+StallF=0 PcSrcE=0 PcTargetE=000003ec
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000024c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 8967 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 9047000
+StallF=0 PcSrcE=0 PcTargetE=00000284
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000254 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 9047 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 9107000
+StallF=0 PcSrcE=0 PcTargetE=000002ec
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001bc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 9107 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 9187000
+StallF=0 PcSrcE=0 PcTargetE=00000358
+InstrD   EXP=00700393 GOT=00700393
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000018 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 9187 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 9367000
+StallF=0 PcSrcE=0 PcTargetE=000000f0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000a0 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 9367 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 9377000
+StallF=1 PcSrcE=0 PcTargetE=000001e8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000a0 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 9377 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 9387000
+StallF=1 PcSrcE=0 PcTargetE=00000110
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000a0 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 9387 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 9417000
+StallF=0 PcSrcE=0 PcTargetE=00000114
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000a8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 9417 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 9427000
+StallF=1 PcSrcE=0 PcTargetE=000001f0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000a8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 9427 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 9437000
+StallF=1 PcSrcE=0 PcTargetE=00000320
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000a8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 9437 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 9687000
+StallF=0 PcSrcE=0 PcTargetE=0000026c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000070 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 9687 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 9887000
+StallF=0 PcSrcE=0 PcTargetE=00000220
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000170 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 9887 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 10217000
+StallF=0 PcSrcE=0 PcTargetE=000001d4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003b8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 10217 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 10287000
+StallF=0 PcSrcE=0 PcTargetE=0000012c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000036c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 10287 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 10297000
+StallF=1 PcSrcE=0 PcTargetE=00000164
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000036c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 10297 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 10307000
+StallF=1 PcSrcE=0 PcTargetE=0000001c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000036c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 10307 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 10357000
+StallF=0 PcSrcE=0 PcTargetE=000000cc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000378 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 10357 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 10507000
+StallF=0 PcSrcE=0 PcTargetE=000003b4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000012c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 10507 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 10797000
+StallF=0 PcSrcE=0 PcTargetE=000002d8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000d4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 10797 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 10807000
+StallF=1 PcSrcE=0 PcTargetE=000001f8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000d4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 10807 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 10817000
+StallF=1 PcSrcE=0 PcTargetE=000001a4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000d4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 10817 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 10887000
+StallF=0 PcSrcE=0 PcTargetE=00000098
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000158 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 10887 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 10977000
+StallF=0 PcSrcE=0 PcTargetE=00000034
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000006c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 10977 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11017000
+StallF=0 PcSrcE=0 PcTargetE=0000017c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000037c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11017 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11057000
+StallF=0 PcSrcE=0 PcTargetE=00000128
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002ac VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11057 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11107000
+StallF=0 PcSrcE=0 PcTargetE=000003f0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001c4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11107 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11247000
+StallF=0 PcSrcE=0 PcTargetE=000003ec
+InstrD   EXP=00300193 GOT=00300193
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000008 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11247 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11377000
+StallF=0 PcSrcE=0 PcTargetE=00000260
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000078 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11377 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11387000
+StallF=1 PcSrcE=0 PcTargetE=00000098
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000078 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11387 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11397000
+StallF=1 PcSrcE=0 PcTargetE=00000110
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000078 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11397 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11427000
+StallF=0 PcSrcE=0 PcTargetE=000002ac
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000005c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11427 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11507000
+StallF=0 PcSrcE=0 PcTargetE=00000144
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000ec VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11507 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11587000
+StallF=0 PcSrcE=0 PcTargetE=00000184
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000f4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11587 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11647000
+StallF=0 PcSrcE=0 PcTargetE=0000014c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000036c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11647 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11727000
+StallF=0 PcSrcE=0 PcTargetE=000002a8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000188 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11727 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11907000
+StallF=0 PcSrcE=0 PcTargetE=00000018
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000340 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11907 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11917000
+StallF=1 PcSrcE=0 PcTargetE=00000230
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000340 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11917 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11927000
+StallF=1 PcSrcE=0 PcTargetE=00000228
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000340 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11927 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11957000
+StallF=0 PcSrcE=0 PcTargetE=00000174
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000348 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11957 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11967000
+StallF=1 PcSrcE=0 PcTargetE=00000148
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000348 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11967 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 11977000
+StallF=1 PcSrcE=0 PcTargetE=00000148
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000348 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 11977 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 12227000
+StallF=0 PcSrcE=0 PcTargetE=00000334
+InstrD   EXP=20300193 GOT=20300193
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000088 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 12227 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 12427000
+StallF=0 PcSrcE=0 PcTargetE=00000098
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000308 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 12427 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 12757000
+StallF=0 PcSrcE=0 PcTargetE=000001bc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000300 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 12757 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 12827000
+StallF=0 PcSrcE=0 PcTargetE=000001b4
+InstrD   EXP=00800413 GOT=00800413
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000001c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 12827 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 12837000
+StallF=1 PcSrcE=0 PcTargetE=000000c4
+InstrD   EXP=00800413 GOT=00800413
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000001c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 12837 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 12847000
+StallF=1 PcSrcE=0 PcTargetE=00000304
+InstrD   EXP=00800413 GOT=00800413
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000001c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 12847 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 12897000
+StallF=0 PcSrcE=0 PcTargetE=000000bc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000028 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 12897 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 13047000
+StallF=0 PcSrcE=0 PcTargetE=00000034
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000a4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 13047 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 13337000
+StallF=0 PcSrcE=0 PcTargetE=00000210
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000144 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 13337 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 13347000
+StallF=1 PcSrcE=0 PcTargetE=00000268
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000144 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 13347 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 13357000
+StallF=1 PcSrcE=0 PcTargetE=000003bc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000144 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 13357 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 13427000
+StallF=0 PcSrcE=0 PcTargetE=000000d0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000338 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 13427 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 13517000
+StallF=0 PcSrcE=0 PcTargetE=0000015c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001cc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 13517 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 13557000
+StallF=0 PcSrcE=0 PcTargetE=000002b4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000f4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 13557 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 13597000
+StallF=0 PcSrcE=0 PcTargetE=000001b8
+InstrD   EXP=00400213 GOT=00400213
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000000c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 13597 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 13647000
+StallF=0 PcSrcE=0 PcTargetE=00000000
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000034c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 13647 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 13787000
+StallF=0 PcSrcE=0 PcTargetE=000000fc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000090 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 13787 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 13917000
+StallF=0 PcSrcE=0 PcTargetE=000000e0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000398 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 13917 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 13927000
+StallF=1 PcSrcE=0 PcTargetE=000002d0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000398 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 13927 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 13937000
+StallF=1 PcSrcE=0 PcTargetE=000001e0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000398 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 13937 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 13967000
+StallF=0 PcSrcE=0 PcTargetE=00000034
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002bc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 13967 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 14047000
+StallF=0 PcSrcE=0 PcTargetE=000000fc
+InstrD   EXP=00400213 GOT=00400213
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000000c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 14047 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 14127000
+StallF=0 PcSrcE=0 PcTargetE=00000164
+InstrD   EXP=00600313 GOT=00600313
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000014 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 14127 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 14187000
+StallF=0 PcSrcE=0 PcTargetE=0000032c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000003c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 14187 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 14267000
+StallF=0 PcSrcE=0 PcTargetE=00000338
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000318 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 14267 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 14447000
+StallF=0 PcSrcE=0 PcTargetE=00000140
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000380 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 14447 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 14457000
+StallF=1 PcSrcE=0 PcTargetE=00000238
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000380 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 14457 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 14467000
+StallF=1 PcSrcE=0 PcTargetE=000003e0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000380 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 14467 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 14497000
+StallF=0 PcSrcE=0 PcTargetE=00000154
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000388 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 14497 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 14507000
+StallF=1 PcSrcE=0 PcTargetE=000001a0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000388 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 14507 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 14517000
+StallF=1 PcSrcE=0 PcTargetE=00000090
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000388 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 14517 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 14767000
+StallF=0 PcSrcE=0 PcTargetE=0000035c
+InstrD   EXP=00100093 GOT=00100093
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000000 VALID=1
+
+IF SCOREBOARD FAILURE
+Time = 14967000
+StallF=0 PcSrcE=0 PcTargetE=00000350
+InstrD   EXP=30100093 GOT=30100093
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000100 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 14967 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 15297000
+StallF=0 PcSrcE=0 PcTargetE=00000024
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001e8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 15297 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 15367000
+StallF=0 PcSrcE=0 PcTargetE=0000031c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000018c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 15367 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 15377000
+StallF=1 PcSrcE=0 PcTargetE=00000084
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000018c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 15377 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 15387000
+StallF=1 PcSrcE=0 PcTargetE=0000006c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000018c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 15387 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 15437000
+StallF=0 PcSrcE=0 PcTargetE=000001cc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000198 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 15437 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 15587000
+StallF=0 PcSrcE=0 PcTargetE=000001d4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000009c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 15587 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 15877000
+StallF=0 PcSrcE=0 PcTargetE=00000188
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000394 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 15877 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 15887000
+StallF=1 PcSrcE=0 PcTargetE=00000038
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000394 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 15887 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 15897000
+StallF=1 PcSrcE=0 PcTargetE=00000134
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000394 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 15897 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 15967000
+StallF=0 PcSrcE=0 PcTargetE=000001c8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001b8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 15967 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16057000
+StallF=0 PcSrcE=0 PcTargetE=00000004
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000036c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16057 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16097000
+StallF=0 PcSrcE=0 PcTargetE=000000ac
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000024c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16097 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16137000
+StallF=0 PcSrcE=0 PcTargetE=00000028
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002cc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16137 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16187000
+StallF=0 PcSrcE=0 PcTargetE=00000330
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003b4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16187 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16327000
+StallF=0 PcSrcE=0 PcTargetE=000000ec
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000378 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16327 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16457000
+StallF=0 PcSrcE=0 PcTargetE=00000200
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001f8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16457 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16467000
+StallF=1 PcSrcE=0 PcTargetE=00000028
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001f8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16467 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16477000
+StallF=1 PcSrcE=0 PcTargetE=00000270
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001f8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16477 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16507000
+StallF=0 PcSrcE=0 PcTargetE=0000001c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003dc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16507 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16587000
+StallF=0 PcSrcE=0 PcTargetE=00000314
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001ac VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16587 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16667000
+StallF=0 PcSrcE=0 PcTargetE=00000124
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000001b4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16667 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16727000
+StallF=0 PcSrcE=0 PcTargetE=0000008c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000022c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16727 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16807000
+StallF=0 PcSrcE=0 PcTargetE=00000308
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000248 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16807 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16987000
+StallF=0 PcSrcE=0 PcTargetE=000002e8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000260 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16987 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 16997000
+StallF=1 PcSrcE=0 PcTargetE=00000280
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000260 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 16997 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 17007000
+StallF=1 PcSrcE=0 PcTargetE=00000238
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000260 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 17007 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 17037000
+StallF=0 PcSrcE=0 PcTargetE=000002b4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000268 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 17037 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 17047000
+StallF=1 PcSrcE=0 PcTargetE=00000078
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000268 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 17047 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 17057000
+StallF=1 PcSrcE=0 PcTargetE=000003f8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000268 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 17057 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 17307000
+StallF=0 PcSrcE=0 PcTargetE=000002e4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000158 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 17307 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 17507000
+StallF=0 PcSrcE=0 PcTargetE=00000048
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000258 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 17507 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 17837000
+StallF=0 PcSrcE=0 PcTargetE=0000030c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000370 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 17837 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 17907000
+StallF=0 PcSrcE=0 PcTargetE=000001e4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000023c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 17907 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 17917000
+StallF=1 PcSrcE=0 PcTargetE=000000a4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000023c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 17917 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 17927000
+StallF=1 PcSrcE=0 PcTargetE=00000354
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000023c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 17927 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 17977000
+StallF=0 PcSrcE=0 PcTargetE=000003fc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000248 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 17977 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 18127000
+StallF=0 PcSrcE=0 PcTargetE=00000194
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000394 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 18127 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 18417000
+StallF=0 PcSrcE=0 PcTargetE=000003c0
+InstrD   EXP=10200113 GOT=10200113
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000044 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 18417 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 18427000
+StallF=1 PcSrcE=0 PcTargetE=00000268
+InstrD   EXP=10200113 GOT=10200113
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000044 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 18427 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 18437000
+StallF=1 PcSrcE=0 PcTargetE=0000018c
+InstrD   EXP=10200113 GOT=10200113
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000044 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 18437 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 18507000
+StallF=0 PcSrcE=0 PcTargetE=00000200
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000058 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 18507 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 18597000
+StallF=0 PcSrcE=0 PcTargetE=0000032c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003cc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 18597 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 18637000
+StallF=0 PcSrcE=0 PcTargetE=000001e4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000284 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 18637 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 18677000
+StallF=0 PcSrcE=0 PcTargetE=000003f8
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000006c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 18677 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 18727000
+StallF=0 PcSrcE=0 PcTargetE=00000300
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002fc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 18727 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 18867000
+StallF=0 PcSrcE=0 PcTargetE=0000013c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000c0 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 18867 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 18997000
+StallF=0 PcSrcE=0 PcTargetE=00000340
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000218 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 18997 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 19007000
+StallF=1 PcSrcE=0 PcTargetE=000001a0
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000218 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 19007 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 19017000
+StallF=1 PcSrcE=0 PcTargetE=00000040
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000218 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 19017 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 19047000
+StallF=0 PcSrcE=0 PcTargetE=00000164
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000023c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 19047 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 19127000
+StallF=0 PcSrcE=0 PcTargetE=0000018c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003cc VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 19127 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 19207000
+StallF=0 PcSrcE=0 PcTargetE=000001c4
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000003d4 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 19207 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 19267000
+StallF=0 PcSrcE=0 PcTargetE=0000036c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000033c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 19267 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 19347000
+StallF=0 PcSrcE=0 PcTargetE=00000218
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000098 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 19347 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 19527000
+StallF=0 PcSrcE=0 PcTargetE=00000390
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000e0 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 19527 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 19537000
+StallF=1 PcSrcE=0 PcTargetE=00000388
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000e0 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 19537 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 19547000
+StallF=1 PcSrcE=0 PcTargetE=00000130
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000e0 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 19547 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 19577000
+StallF=0 PcSrcE=0 PcTargetE=00000194
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000e8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 19577 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 19587000
+StallF=1 PcSrcE=0 PcTargetE=00000150
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000e8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 19587 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 19597000
+StallF=1 PcSrcE=0 PcTargetE=00000280
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000000e8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 19597 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 19847000
+StallF=0 PcSrcE=0 PcTargetE=000001cc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000110 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 19847 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 20047000
+StallF=0 PcSrcE=0 PcTargetE=00000380
+InstrD   EXP=00500293 GOT=00500293
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000010 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 20047 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 20377000
+StallF=0 PcSrcE=0 PcTargetE=00000274
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=00000298 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 20377 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 20447000
+StallF=0 PcSrcE=0 PcTargetE=0000028c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002ac VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 20447 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 20457000
+StallF=1 PcSrcE=0 PcTargetE=00000324
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002ac VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 20457 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 20467000
+StallF=1 PcSrcE=0 PcTargetE=000000bc
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002ac VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 20467 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 20517000
+StallF=0 PcSrcE=0 PcTargetE=0000034c
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=000002b8 VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 20517 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+IF SCOREBOARD FAILURE
+Time = 20667000
+StallF=0 PcSrcE=0 PcTargetE=00000074
+InstrD   EXP=00000013 GOT=00000013
+PcD      EXP=00000000 GOT=00000000
+PcPlus4D EXP=00000000 GOT=00000004
+EXP INSTR-PC=0000020c VALID=1
+Error: REFERENCE INVARIANT FAILED: instruction/PC association mismatch in model
+Time: 20667 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 469
+
+================================================
+              IF VERIFICATION REPORT
+================================================
+Directed Edge Cases   = 7
+Random Cases          = 2000
+Scoreboard Checks     = 2061
+Scoreboard Passes     = 1788
+Scoreboard Failures   = 273
+Assertion Failures    = 245
+Functional Coverage   = 89.65%
+================================================
+
+******** IF VERIFICATION FAILED ********
+
+$finish called at time : 20767 ns : File "C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv" Line 845
+
+
+
+
+
+
+
+
+
+
+
+log 17/08/2026 iteration 2
+
+relaunch_sim
+Command: launch_simulation -step compile -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Mon Aug 17 17:35:08 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_IF_cov_asrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/iitm_bs/tsc_scl_verification/tsc_scl_verification.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/AMDDesignTools/2025.2/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_IF_cov_asrt' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/iitm_bs/tsc_scl_verification/tsc_scl_verification.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L uvm -prj tb_IF_cov_asrt_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/IF.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IF
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/MUX_2_1.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MUX_2_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/Pc_Module.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Pc_Module
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/Pc_adder.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Pc_adder
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/inst_memory.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module inst_memory
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_IF_cov_asrt
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+Command: launch_simulation -step elaborate -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Mon Aug 17 17:35:10 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_IF_cov_asrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/iitm_bs/tsc_scl_verification/tsc_scl_verification.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/iitm_bs/tsc_scl_verification/tsc_scl_verification.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_IF_cov_asrt_behav xil_defaultlib.tb_IF_cov_asrt xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2025.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/AMDDesignTools/2025.2/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_IF_cov_asrt_behav xil_defaultlib.tb_IF_cov_asrt xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.MUX_2_1
+Compiling module xil_defaultlib.Pc_Module
+Compiling module xil_defaultlib.inst_memory
+Compiling module xil_defaultlib.Pc_adder
+Compiling module xil_defaultlib.IF
+Compiling module xil_defaultlib.tb_IF_cov_asrt
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_IF_cov_asrt_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+Time resolution is 1 ps
+
+================================================
+          IF STAGE VERIFICATION
+   CYCLE-ACCURATE SYNCHRONOUS SRAM MODEL
+================================================
+
+Testing reset...
+Testing sequential two-cycle fetch...
+Error: ASSERTION FAILED: Invalid IF/ID bubble state | InstrD=00000013 PC=00000000 PC4=00000000
+Time: 26 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 818
+Testing reset...
+Testing single-cycle stall...
+Error: ASSERTION FAILED: Invalid IF/ID bubble state | InstrD=00000013 PC=00000000 PC4=00000000
+Time: 206 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 818
+Error: ASSERTION FAILED: Invalid IF/ID bubble state | InstrD=00000013 PC=00000000 PC4=00000000
+Time: 216 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 818
+Testing reset...
+Testing multi-cycle stall...
+Error: ASSERTION FAILED: Invalid IF/ID bubble state | InstrD=00000013 PC=00000000 PC4=00000000
+Time: 306 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 818
+Testing reset...
+Testing stall-entry capture and release...
+Error: ASSERTION FAILED: Invalid IF/ID bubble state | InstrD=00000013 PC=00000000 PC4=00000000
+Time: 356 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 818
+Error: ASSERTION FAILED: Invalid IF/ID bubble state | InstrD=00000013 PC=00000000 PC4=00000000
+Time: 366 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 818
+Error: ASSERTION FAILED: Invalid IF/ID bubble state | InstrD=00000013 PC=00000000 PC4=00000000
+Time: 376 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 818
+Error: ASSERTION FAILED: Invalid IF/ID bubble state | InstrD=00000013 PC=00000000 PC4=00000000
+Time: 386 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 818
+Error: ASSERTION FAILED: Invalid IF/ID bubble state | InstrD=00000013 PC=00000000 PC4=00000000
+Time: 396 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 818
+Testing reset...
+Testing redirect and two-stage flush...
+Error: ASSERTION FAILED: Invalid IF/ID bubble state | InstrD=00000013 PC=00000000 PC4=00000000
+Time: 456 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 818
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 506 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Testing reset...
+Testing stall + redirect interaction...
+Error: ASSERTION FAILED: Invalid IF/ID bubble state | InstrD=00000013 PC=00000000 PC4=00000000
+Time: 556 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 818
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 596 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Testing reset...
+
+Running 2000 random IF scenarios...
+
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 696 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+relaunch_sim: Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 2143.152 ; gain = 0.000
+run all
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 1626 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 1636 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 1646 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 1676 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 1686 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 1696 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 4166 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 4176 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 4186 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 4216 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 4226 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 4236 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 5016 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 5086 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 5096 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 5106 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 5816 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 5856 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 8716 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 8726 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 8736 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 9066 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 11126 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 12106 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 12706 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 12716 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 12726 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 12776 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 13476 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 13926 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 14006 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 14066 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 14646 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 14846 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 18296 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 18306 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 18316 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 19926 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 788
+
+================================================
+          IF VERIFICATION REPORT
+================================================
+Edge Case Tests     = 13
+Random Tests        = 2000
+Scoreboard Checks   = 2051
+Scoreboard Passes   = 2051
+Scoreboard Failures = 0
+Assertion Failures  = 52
+Functional Coverage = 75.83%
+================================================
+
+******** IF VERIFICATION FAILED ********
+
+$finish called at time : 20646 ns : File "C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv" Line 1474
+
+
+
+
+
+
+
+
+
+
+
+
+log 16/08/2026 iteration 1
+
+source tb_IF_cov_asrt.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+
+================================================
+          IF STAGE VERIFICATION
+   CYCLE-ACCURATE SYNCHRONOUS SRAM MODEL
+================================================
+
+Testing reset...
+Testing sequential two-cycle fetch...
+Testing reset...
+Testing single-cycle stall...
+Testing reset...
+Testing multi-cycle stall...
+Testing reset...
+Testing stall-entry capture and release...
+Testing reset...
+Testing redirect and two-stage flush...
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 506 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 781
+Testing reset...
+Testing stall + redirect interaction...
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 596 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 781
+Testing reset...
+
+Running 2000 random IF scenarios...
+
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 696 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 781
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 736 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 781
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 776 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 781
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 826 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 781
+Error: ASSERTION FAILED: PcPlus4D mismatch | PC=00000000 PC4=00000000
+Time: 966 ns  Iteration: 0  Process: /tb_IF_cov_asrt/scoreboard_check  Scope: tb_IF_cov_asrt.scoreboard_check  File: C:/iitm_bs/scl_tsc/tb/tb_ifetch_stage.sv Line: 781
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_IF_cov_asrt_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 2143.152 ; gain = 0.000
