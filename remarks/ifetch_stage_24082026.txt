@@ -1,0 +1,26 @@
+1. Fix reset release:
+   deassert rst on negedge, never at posedge.
+
+2. Replace inferred "valid" model with a tagged fetch token:
+   {instruction, PC, valid}.
+
+3. Pipeline that token through the exact two-cycle SRAM
+   latency.
+
+4. Treat bubbles as valid=0, PC=don't-care.
+
+5. Compare:
+   InstrD
+   PcD
+   PcPlus4D
+   against the token reaching IF/ID.
+
+6. Test legal hazard combinations separately.
+
+7. Keep a dedicated robustness test for:
+   StallF + PcSrcE.
+
+8. Add a directed test specifically for:
+   stall-entry → replay → PC association.
+
+9. Only then run 2000 random cases.

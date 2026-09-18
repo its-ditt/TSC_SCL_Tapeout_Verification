@@ -1,6 +1,6 @@
 module data_mem_stage(
     input  logic        clk,
-    input  logic        rst,
+    input  logic        rst_n,
     input  logic        RegWriteM,
     input  logic [ 1:0] ResultSrcM,
     input  logic        MemWriteM,
@@ -37,7 +37,7 @@ logic [31:0] ReadDataM;
 
 jtsc_dmem data_mem (
     .clk(clk),
-    .rst(rst),
+    .rst_n(rst_n),
     .A(ALUResultM),
     .WD(WriteDataM),
     .MemWrite(MemWriteM),
@@ -58,9 +58,9 @@ jtsc_dmem data_mem (
     );
     
     
-always_ff @(posedge clk or negedge rst)
+always_ff @(posedge clk or negedge rst_n)
 begin
-    if (!rst)
+    if (!rst_n)
     begin
         RegWriteW  <= 0;
         ResultSrcW <= 0;

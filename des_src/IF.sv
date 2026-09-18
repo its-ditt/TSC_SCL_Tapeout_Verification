@@ -3,7 +3,7 @@
 module IF(
 
 input logic clk,
-input logic rst,
+input logic rst_n,
 
 //Imem Macro
 output logic [31:0] INSTR_ADD,
@@ -62,7 +62,7 @@ MUX_2_1 branch_mux(
 Pc_Module Pc(
 
     .clk(clk),
-    .rst(rst),
+    .rst_n(rst_n),
 
     .Pc_next(PC_BranchNext),
     .Pc(PCF),
@@ -76,7 +76,8 @@ Pc_Module Pc(
 //////////////////////////////////////////////////////
 
 inst_memory inst_mem(
-
+    .clk(clk),
+    .rst_n(rst_n),
     .A(PCF),
     .INSTR_ADD(INSTR_ADD),
     .INSTR(INSTR),
@@ -97,33 +98,39 @@ Pc_adder pc_adder(
 //STALLM check
 logic StallF_reg;
 logic [31:0] sINSTR;
-always_ff @(posedge clk or negedge rst)
+always_ff @(posedge clk or negedge rst_n)
 begin
-    if(!rst)
+    if(!rst_n)
+    begin
         PcSrcE_delay <= 1'b0;
+        StallF_reg   <= 1'b0;
+        sINSTR       <= 32'h13;     //nop
+    end
     else begin
         PcSrcE_delay <= PcSrcE;
-        StallF_reg   <= StallF;   
+        StallF_reg   <= StallF;
+        
+        if(StallF && (~StallF_reg))
+                sINSTR <= InstrF;   
     end
     
-    if(StallF && (~StallF_reg))
-        sINSTR <= InstrF;
+    
 end
 //////////////////////////////////////////////////////
 // IF/ID Pipeline Register
 //////////////////////////////////////////////////////
 
-always_ff @(posedge clk or negedge rst)
+always_ff @(posedge clk or negedge rst_n)
 begin
 
-    if(!rst)
+    if(!rst_n)
     begin
 
         InstrD         <= 32'h00000013; // NOP
         PcD            <= 32'd0;
         PcPlus4D       <= 32'd4;
         PcD_delay      <= 32'd0;
-        PcPlus4D_delay <= 32'd4;
+        PcPlus4D_delay <= 32'd0;
     end
 
     //////////////////////////////////////////////////
@@ -138,7 +145,7 @@ else if(FlushIF)
         PcD            <= 32'd0;
         PcPlus4D       <= 32'd4;
         PcD_delay      <= 32'd0;
-        PcPlus4D_delay <= 32'd4;    
+        PcPlus4D_delay <= 32'd0;    
     end
 
     //////////////////////////////////////////////////
@@ -182,5 +189,4 @@ else if(FlushIF)
     //////////////////////////////////////////////////
 
 end
-
 endmodule

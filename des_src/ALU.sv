@@ -24,10 +24,10 @@ case(ALUControlE)
 4'b0110:ALUResult=SrcAE>>SrcBE[4:0];
 4'b0111:ALUResult=$signed(SrcAE)>>>SrcBE[4:0];
 
-4'b1000:ALUResult= (SrcAE<SrcBE)?32'd1:32'd0;
+4'b1000:ALUResult= ($signed(SrcAE)<$signed(SrcBE))?32'd1:32'd0;
 
-4'b1001:ALUResult= ($signed(SrcAE)<$signed(SrcBE))
-?32'd1:32'd0;
+4'b1001:ALUResult= (SrcAE<SrcBE)?32'd1:32'd0;
+
 
 default:ALUResult=32'h00000000;
 

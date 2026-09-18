@@ -3,7 +3,7 @@
 module decode_stage(
 
     input logic clk,
-    input logic rst,
+    input logic rst_n,
 
     input logic RegWriteW,
     input logic [31:0] ResultW,
@@ -101,7 +101,7 @@ control_unit_top control (
 registerfile register_file (
 
     .clk(clk),
-    .rst(rst),
+    .rst_n(rst_n),
 
     .A1(InstrD[19:15]),
     .A2(InstrD[24:20]),
@@ -129,10 +129,10 @@ sign_extend extend (
 // ID/EX Pipeline Register
 //////////////////////////////////////////////////////
 
-always_ff @(posedge clk or negedge rst)
+always_ff @(posedge clk or negedge rst_n)
 begin
 
-    if(!rst)
+    if(!rst_n)
     begin
 
         RegWriteE   <= 0;

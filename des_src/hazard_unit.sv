@@ -1,17 +1,25 @@
 module hazard_unit(
 
-    input logic rst,
+    input logic rst_n,
+
     input logic RegWriteM,
     input logic RegWriteW,
+
     input logic [4:0] RdM,
     input logic [4:0] RdW,
+
     input logic [4:0] Rs1E,
     input logic [4:0] Rs2E,
+    
     input logic [4:0] Rs1D,
     input logic [4:0] Rs2D,
+
     input logic [4:0] RdE,
+    
     input logic [1:0] ResultSrcE,
+    
     input logic PcSrcE,
+    
     input logic bus_stall,
     
 ////////////////////
@@ -33,7 +41,7 @@ module hazard_unit(
 //////////////////////////////////////////////////////
 
 assign ForwardAE =
-    (!rst) ? 2'b00 :
+    (!rst_n) ? 2'b00 :
 
     ((RegWriteM) && (RdM != 0) && (RdM == Rs1E)) ? 2'b10 :
 
@@ -42,7 +50,7 @@ assign ForwardAE =
     2'b00;
 
 assign ForwardBE =
-    (!rst) ? 2'b00 :
+    (!rst_n) ? 2'b00 :
 
     ((RegWriteM) && (RdM != 0) && (RdM == Rs2E)) ? 2'b10 :
 

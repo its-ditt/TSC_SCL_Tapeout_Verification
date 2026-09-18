@@ -3,7 +3,7 @@
 module Execute_stage(
 
     input logic clk,
-    input logic rst,
+    input logic rst_n,
 
 //////////////////////////////////////////////////////
 // Control Signals from Decode Stage
@@ -221,7 +221,7 @@ assign PcSrcE = BranchTaken | jumpE;
 // EX/MEM Pipeline Register
 //
 // Priority (highest to lowest):
-//   1. rst        - async reset to zero
+//   1. rst_n        - async reset to zero
 //   2. StallM     - hold current values (APB not ready)
 //   3. FlushE     - insert bubble (branch/jump taken)
 //   4. normal     - latch new EX outputs
@@ -239,10 +239,10 @@ assign PcSrcE = BranchTaken | jumpE;
 //     reaches MEM and writes registers or memory.
 //////////////////////////////////////////////////////
 
-always_ff @(posedge clk or negedge rst)
+always_ff @(posedge clk or negedge rst_n)
 begin
 
-    if(!rst)
+    if(!rst_n)
     begin
         // --- 1. Async reset ---
         RegWriteM   <= 1'b0;

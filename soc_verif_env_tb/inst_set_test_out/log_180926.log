@@ -1,0 +1,71 @@
+==============================================
+Loading instruction memory
+Program : program.hex
+==============================================
+First instruction = 00a00d93
+Instruction memory loaded successfully
+==============================================
+
+============================================================
+RV32I ISA DIRECTED TEST
+Program : program.hex
+============================================================
+relaunch_sim: Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 2285.203 ; gain = 0.000
+run all
+Program execution complete.
+
+============================================================
+Checking instruction results
+============================================================
+[PASS]           ADD @ 00000300 ACTUAL=0000000d EXPECTED=0000000d
+[PASS]           SUB @ 00000304 ACTUAL=00000007 EXPECTED=00000007
+[PASS]           SLL @ 00000308 ACTUAL=00000050 EXPECTED=00000050
+[PASS]           SLT @ 0000030c ACTUAL=00000001 EXPECTED=00000001
+[PASS]          SLTU @ 00000310 ACTUAL=00000001 EXPECTED=00000001
+[PASS]           XOR @ 00000314 ACTUAL=00000009 EXPECTED=00000009
+[PASS]           SRL @ 00000318 ACTUAL=00000001 EXPECTED=00000001
+[PASS]           SRA @ 0000031c ACTUAL=ffffffff EXPECTED=ffffffff
+[PASS]            OR @ 00000320 ACTUAL=0000000b EXPECTED=0000000b
+[PASS]           AND @ 00000324 ACTUAL=00000002 EXPECTED=00000002
+[PASS]          ADDI @ 00000328 ACTUAL=0000000f EXPECTED=0000000f
+[PASS]          SLTI @ 0000032c ACTUAL=00000001 EXPECTED=00000001
+[PASS]         SLTIU @ 00000330 ACTUAL=00000000 EXPECTED=00000000
+[PASS]          XORI @ 00000334 ACTUAL=000000fa EXPECTED=000000fa
+[PASS]           ORI @ 00000338 ACTUAL=0000000f EXPECTED=0000000f
+[PASS]          ANDI @ 0000033c ACTUAL=00000000 EXPECTED=00000000
+[PASS]          SLLI @ 00000340 ACTUAL=00000028 EXPECTED=00000028
+[PASS]          SRLI @ 00000344 ACTUAL=00000005 EXPECTED=00000005
+[PASS]          SRAI @ 00000348 ACTUAL=fffffffc EXPECTED=fffffffc
+[PASS]           LUI @ 0000034c ACTUAL=12345000 EXPECTED=12345000
+[PASS]         AUIPC @ 00000350 ACTUAL=00001094 EXPECTED=00001094
+[PASS]            SW @ 00000100 ACTUAL=12345000 EXPECTED=12345000
+[FAIL]         SH/SB @ 00000104 ACTUAL=00fffff9 EXPECTED=00f9fff9
+[PASS]  SW for loads @ 00000108 ACTUAL=fffffff9 EXPECTED=fffffff9
+[PASS]            LW @ 00000354 ACTUAL=12345000 EXPECTED=12345000
+[PASS]            LH @ 00000358 ACTUAL=fffffff9 EXPECTED=fffffff9
+[PASS]           LHU @ 0000035c ACTUAL=0000fff9 EXPECTED=0000fff9
+[PASS]            LB @ 00000360 ACTUAL=fffffff9 EXPECTED=fffffff9
+[PASS]           LBU @ 00000364 ACTUAL=000000f9 EXPECTED=000000f9
+[PASS]           BEQ @ 00000368 ACTUAL=00000000 EXPECTED=00000000
+[PASS]           BNE @ 0000036c ACTUAL=00000001 EXPECTED=00000001
+[FAIL]           BLT @ 00000370 ACTUAL=00000000 EXPECTED=00000001
+[FAIL]           BGE @ 00000374 ACTUAL=00000000 EXPECTED=00000001
+[PASS]          BLTU @ 00000378 ACTUAL=00000000 EXPECTED=00000000
+[FAIL]          BGEU @ 0000037c ACTUAL=00000000 EXPECTED=00000001
+[FAIL]      JAL link @ 00000380 ACTUAL=00000001 EXPECTED=00000248
+[PASS] JAL wrong-path @ 00000384 ACTUAL=00000000 EXPECTED=00000000
+[PASS]    JAL target @ 00000388 ACTUAL=00000001 EXPECTED=00000001
+[FAIL]     JALR link @ 00000390 ACTUAL=00000001 EXPECTED=00000268
+[PASS] JALR wrong-path @ 0000038c ACTUAL=00000000 EXPECTED=00000000
+[PASS]   JALR target @ 00000394 ACTUAL=00000001 EXPECTED=00000001
+
+============================================================
+RV32I ISA DIRECTED TEST SUMMARY
+============================================================
+Tests Passed : 35
+Tests Failed : 6
+Total Checks : 41
+TEST RESULT  : FAIL
+============================================================
+******** RV32I ISA TEST FAILED ********
+$finish called at time : 15066 ns : File "C:/iitm_bs/scl_tsc/soc_verif_env_tb/inst_set_test/tb_pipeline_top.sv" Line 312

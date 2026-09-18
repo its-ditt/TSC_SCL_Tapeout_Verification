@@ -3,7 +3,7 @@
 module registerfile(
 
     input  logic        clk,
-    input  logic        rst,
+    input  logic        rst_n,
 
     input  logic        WE3,
     input  logic [4:0]  A1,
@@ -23,10 +23,10 @@ logic [31:0] reg_file [31:0];
 integer i;
 
     // Write Logic + Reset
-always_ff @(posedge clk or negedge rst) begin
+always_ff @(posedge clk or negedge rst_n) begin
 
         // Active LOW asynchronous reset
-    if(!rst) begin
+    if(!rst_n) begin
 
         for(i = 0; i < 32; i = i + 1)
             reg_file[i] <= 32'd0;

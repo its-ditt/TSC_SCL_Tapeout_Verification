@@ -1,0 +1,147 @@
+# run 1000ns
+==============================================
+Loading instruction memory
+Program : program.hex
+==============================================
+WARNING: File program.hex referenced on C:/iitm_bs/scl_tsc/des_src/hazard_unit.sv at line 87 cannot be opened for reading. Please ensure that this file is available in the current working directory or parent directory of xsim.dir location specified via -xsimdir switch.
+First instruction = 00000013
+Instruction memory loaded successfully
+==============================================
+
+============================================================
+RV32I ISA DIRECTED TEST
+Program : program.hex
+============================================================
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_pipeline_top_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:14 . Memory (MB): peak = 2285.203 ; gain = 0.000
+run all
+Program execution complete.
+
+============================================================
+Checking instruction results
+============================================================
+[FAIL]           ADD @ 00000300 ACTUAL=00000000 EXPECTED=0000000d
+[FAIL]           SUB @ 00000304 ACTUAL=00000000 EXPECTED=00000007
+[FAIL]           SLL @ 00000308 ACTUAL=00000000 EXPECTED=00000050
+[FAIL]           SLT @ 0000030c ACTUAL=00000000 EXPECTED=00000001
+[FAIL]          SLTU @ 00000310 ACTUAL=00000000 EXPECTED=00000001
+[FAIL]           XOR @ 00000314 ACTUAL=00000000 EXPECTED=00000009
+[FAIL]           SRL @ 00000318 ACTUAL=00000000 EXPECTED=00000001
+[FAIL]           SRA @ 0000031c ACTUAL=00000000 EXPECTED=ffffffff
+[FAIL]            OR @ 00000320 ACTUAL=00000000 EXPECTED=0000000b
+[FAIL]           AND @ 00000324 ACTUAL=00000000 EXPECTED=00000002
+[FAIL]          ADDI @ 00000328 ACTUAL=00000000 EXPECTED=0000000f
+[FAIL]          SLTI @ 0000032c ACTUAL=00000000 EXPECTED=00000001
+[PASS]         SLTIU @ 00000330 ACTUAL=00000000 EXPECTED=00000000
+[FAIL]          XORI @ 00000334 ACTUAL=00000000 EXPECTED=000000fa
+[FAIL]           ORI @ 00000338 ACTUAL=00000000 EXPECTED=0000000f
+[PASS]          ANDI @ 0000033c ACTUAL=00000000 EXPECTED=00000000
+[FAIL]          SLLI @ 00000340 ACTUAL=00000000 EXPECTED=00000028
+[FAIL]          SRLI @ 00000344 ACTUAL=00000000 EXPECTED=00000005
+[FAIL]          SRAI @ 00000348 ACTUAL=00000000 EXPECTED=fffffffc
+[FAIL]           LUI @ 0000034c ACTUAL=00000000 EXPECTED=12345000
+[FAIL]         AUIPC @ 00000350 ACTUAL=00000000 EXPECTED=00001094
+[FAIL]            SW @ 00000100 ACTUAL=00000000 EXPECTED=12345000
+[FAIL]         SH/SB @ 00000104 ACTUAL=00000000 EXPECTED=00f9fff9
+[FAIL]  SW for loads @ 00000108 ACTUAL=00000000 EXPECTED=fffffff9
+[FAIL]            LW @ 00000354 ACTUAL=00000000 EXPECTED=12345000
+[FAIL]            LH @ 00000358 ACTUAL=00000000 EXPECTED=fffffff9
+[FAIL]           LHU @ 0000035c ACTUAL=00000000 EXPECTED=0000fff9
+[FAIL]            LB @ 00000360 ACTUAL=00000000 EXPECTED=fffffff9
+[FAIL]           LBU @ 00000364 ACTUAL=00000000 EXPECTED=000000f9
+[PASS]           BEQ @ 00000368 ACTUAL=00000000 EXPECTED=00000000
+[FAIL]           BNE @ 0000036c ACTUAL=00000000 EXPECTED=00000001
+[FAIL]           BLT @ 00000370 ACTUAL=00000000 EXPECTED=00000001
+[FAIL]           BGE @ 00000374 ACTUAL=00000000 EXPECTED=00000001
+[PASS]          BLTU @ 00000378 ACTUAL=00000000 EXPECTED=00000000
+[FAIL]          BGEU @ 0000037c ACTUAL=00000000 EXPECTED=00000001
+[FAIL]      JAL link @ 00000380 ACTUAL=00000000 EXPECTED=00000248
+[PASS] JAL wrong-path @ 00000384 ACTUAL=00000000 EXPECTED=00000000
+[FAIL]    JAL target @ 00000388 ACTUAL=00000000 EXPECTED=00000001
+[FAIL]     JALR link @ 00000390 ACTUAL=00000000 EXPECTED=00000268
+[PASS] JALR wrong-path @ 0000038c ACTUAL=00000000 EXPECTED=00000000
+[FAIL]   JALR target @ 00000394 ACTUAL=00000000 EXPECTED=00000001
+
+============================================================
+RV32I ISA DIRECTED TEST SUMMARY
+============================================================
+Tests Passed : 6
+Tests Failed : 35
+Total Checks : 41
+TEST RESULT  : FAIL
+============================================================
+******** RV32I ISA TEST FAILED ********
+$finish called at time : 15066 ns : File "C:/iitm_bs/scl_tsc/soc_verif_env_tb/inst_set_test/tb_pipeline_top.sv" Line 310
+
+# run 1000ns
+==============================================
+Loading instruction memory
+Program : program.hex
+==============================================
+First instruction = 00a00d93
+Instruction memory loaded successfully
+==============================================
+
+============================================================
+RV32I ISA DIRECTED TEST
+Program : program.hex
+============================================================
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_pipeline_top_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+run all
+Program execution complete.
+
+============================================================
+Checking instruction results
+============================================================
+[FAIL]           ADD @ 00000300 ACTUAL=00000003 EXPECTED=0000000d
+[FAIL]           SUB @ 00000304 ACTUAL=fffffffd EXPECTED=00000007
+[FAIL]           SLL @ 00000308 ACTUAL=00000000 EXPECTED=00000050
+[PASS]           SLT @ 0000030c ACTUAL=00000001 EXPECTED=00000001
+[PASS]          SLTU @ 00000310 ACTUAL=00000001 EXPECTED=00000001
+[FAIL]           XOR @ 00000314 ACTUAL=00000003 EXPECTED=00000009
+[FAIL]           SRL @ 00000318 ACTUAL=00000000 EXPECTED=00000001
+[PASS]           SRA @ 0000031c ACTUAL=ffffffff EXPECTED=ffffffff
+[FAIL]            OR @ 00000320 ACTUAL=00000003 EXPECTED=0000000b
+[FAIL]           AND @ 00000324 ACTUAL=00000000 EXPECTED=00000002
+[FAIL]          ADDI @ 00000328 ACTUAL=00000005 EXPECTED=0000000f
+[PASS]          SLTI @ 0000032c ACTUAL=00000001 EXPECTED=00000001
+[PASS]         SLTIU @ 00000330 ACTUAL=00000000 EXPECTED=00000000
+[FAIL]          XORI @ 00000334 ACTUAL=000000f0 EXPECTED=000000fa
+[FAIL]           ORI @ 00000338 ACTUAL=00000005 EXPECTED=0000000f
+[PASS]          ANDI @ 0000033c ACTUAL=00000000 EXPECTED=00000000
+[FAIL]          SLLI @ 00000340 ACTUAL=00000000 EXPECTED=00000028
+[FAIL]          SRLI @ 00000344 ACTUAL=00000000 EXPECTED=00000005
+[PASS]          SRAI @ 00000348 ACTUAL=fffffffc EXPECTED=fffffffc
+[PASS]           LUI @ 0000034c ACTUAL=12345000 EXPECTED=12345000
+[FAIL]         AUIPC @ 00000350 ACTUAL=00001090 EXPECTED=00001094
+[PASS]            SW @ 00000100 ACTUAL=12345000 EXPECTED=12345000
+[FAIL]         SH/SB @ 00000104 ACTUAL=00fffff9 EXPECTED=00f9fff9
+[PASS]  SW for loads @ 00000108 ACTUAL=fffffff9 EXPECTED=fffffff9
+[PASS]            LW @ 00000354 ACTUAL=12345000 EXPECTED=12345000
+[PASS]            LH @ 00000358 ACTUAL=fffffff9 EXPECTED=fffffff9
+[PASS]           LHU @ 0000035c ACTUAL=0000fff9 EXPECTED=0000fff9
+[PASS]            LB @ 00000360 ACTUAL=fffffff9 EXPECTED=fffffff9
+[PASS]           LBU @ 00000364 ACTUAL=000000f9 EXPECTED=000000f9
+[PASS]           BEQ @ 00000368 ACTUAL=00000000 EXPECTED=00000000
+[PASS]           BNE @ 0000036c ACTUAL=00000001 EXPECTED=00000001
+[FAIL]           BLT @ 00000370 ACTUAL=00000000 EXPECTED=00000001
+[FAIL]           BGE @ 00000374 ACTUAL=00000000 EXPECTED=00000001
+[PASS]          BLTU @ 00000378 ACTUAL=00000000 EXPECTED=00000000
+[FAIL]          BGEU @ 0000037c ACTUAL=00000000 EXPECTED=00000001
+[FAIL]      JAL link @ 00000380 ACTUAL=00000001 EXPECTED=00000248
+[PASS] JAL wrong-path @ 00000384 ACTUAL=00000000 EXPECTED=00000000
+[PASS]    JAL target @ 00000388 ACTUAL=00000001 EXPECTED=00000001
+[FAIL]     JALR link @ 00000390 ACTUAL=00000000 EXPECTED=00000268
+[PASS] JALR wrong-path @ 0000038c ACTUAL=00000000 EXPECTED=00000000
+[PASS]   JALR target @ 00000394 ACTUAL=00000001 EXPECTED=00000001
+
+============================================================
+RV32I ISA DIRECTED TEST SUMMARY
+============================================================
+Tests Passed : 22
+Tests Failed : 19
+Total Checks : 41
+TEST RESULT  : FAIL
+============================================================
