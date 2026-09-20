@@ -18,10 +18,10 @@ always_comb begin
         case(funct3)
         3'b000: ALUControl = 4'b0001;   //sub for beq
         3'b001: ALUControl = 4'b0001;   //sub for bne
-        3'b100: ALUControl = 4'b1001;   //slt for blt
-        3'b101: ALUControl = 4'b1001;   //slt for bge
-        3'b110: ALUControl = 4'b1000;   //sltu for bltu
-        3'b111: ALUControl = 4'b1000;   //sltu for bgeu
+        3'b100: ALUControl = 4'b1000;   //slt for blt
+        3'b101: ALUControl = 4'b1000;   //slt for bge
+        3'b110: ALUControl = 4'b1001;   //sltu for bltu
+        3'b111: ALUControl = 4'b1001;   //sltu for bgeu
         default:ALUControl = 4'b0000;
         endcase
     end

@@ -22,6 +22,7 @@ module jtsc_dmem(
     input  logic  [31:0] MEM_RDATA
 );
 
+logic [31:0] mem_wdata;
 logic [31:0] load_byte;
 logic [31:0] load_half;
 logic [3:0] wstrb_reg;
@@ -30,7 +31,7 @@ logic req_pending;
 assign MEM_WRITE = (|wstrb_reg)? (MemWrite && !req_pending) : 1'b0;
 assign MEM_READ = MemRead && !req_pending;
 assign MEM_ADDR = A; 
-assign MEM_WDATA = WD;
+assign MEM_WDATA = mem_wdata;
 assign MEM_WSTRB = (MemWrite)? wstrb_reg : 4'b0000;
 assign StallMem = (MemRead || MemWrite) && !((MEM_WRITE || MEM_READ || req_pending) && MEM_READY);
 
@@ -55,14 +56,34 @@ end
 
 always_comb
 begin 
+    wstrb_reg = 4'b0000;
+    mem_wdata  = 32'b0;
     if(MemWrite)
     begin
-        if(funct3M == 3'b000) wstrb_reg = 4'b0001 << A[1:0];
-        else if (funct3M == 3'b001) wstrb_reg = 4'b0011 << A[1:0];
-        else if(funct3M == 3'b010) wstrb_reg = 4'b1111;
-        else wstrb_reg = 4'b0000;
+        if(funct3M == 3'b000)
+        begin
+            wstrb_reg = 4'b0001 << A[1:0];
+            mem_wdata = {4{WD[7:0]}};
+        end    
+        else if (funct3M == 3'b001) 
+        begin
+            wstrb_reg = 4'b0011 << A[1:0];
+            mem_wdata = {2{WD[15:0]}};
+        end
+        else if(funct3M == 3'b010) 
+        begin
+            wstrb_reg = 4'b1111;
+            mem_wdata = WD;
+        end
+        else 
+        begin
+            wstrb_reg = 4'b0000;
+            mem_wdata  = 32'b0;
+        end
     end
     else wstrb_reg = 4'b0000;
+    
+    
 end   
 
 always_comb begin

@@ -21,7 +21,7 @@ begin
     if(!rst_n)
         allow_instr <= 1'b0;
     else
-        allow_instr = 1'b1;
+        allow_instr <= 1'b1;
 end
     
 assign RD = (allow_instr)? INSTR: 32'h13;

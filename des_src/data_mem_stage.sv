@@ -54,7 +54,6 @@ jtsc_dmem data_mem (
     .MEM_WDATA(MEM_WDATA),
     .MEM_WSTRB(MEM_WSTRB),
     .MEM_RDATA(MEM_RDATA)
-//    .axi_err(axi_err)
     );
     
     

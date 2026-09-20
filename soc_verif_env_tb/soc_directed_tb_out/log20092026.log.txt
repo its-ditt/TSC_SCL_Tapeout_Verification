@@ -1,0 +1,119 @@
+source tb_soc_top.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+
+============================================================
+SO C PROGRAM LOAD
+Program : programs/program.hex
+Words   : 126
+============================================================
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_soc_top_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:15 . Memory (MB): peak = 1956.938 ; gain = 39.328
+run all
+Instruction load complete. Verifying SRAM contents...
+IMEM verification: PASS (126 words)
+
+============================================================
+RUNNING FULL SOC DIRECTED PROGRAM
+============================================================
+Error: AXI MONITOR: RDATA mismatch at 00000104 expected=00008001 actual=xxxx8001
+Time: 13165 ns  Iteration: 0  Process: /tb_soc_top/Always5_31  Scope: tb_soc_top  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_axi_monitor.svh Line: 113
+Error: AXI MONITOR: RDATA mismatch at 00000104 expected=00008001 actual=xxxx8001
+Time: 13205 ns  Iteration: 0  Process: /tb_soc_top/Always5_31  Scope: tb_soc_top  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_axi_monitor.svh Line: 113
+Error: AXI MONITOR: RDATA mismatch at 00000106 expected=00808001 actual=xx808001
+Time: 13385 ns  Iteration: 0  Process: /tb_soc_top/Always5_31  Scope: tb_soc_top  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_axi_monitor.svh Line: 113
+Error: AXI MONITOR: RDATA mismatch at 00000106 expected=00808001 actual=xx808001
+Time: 13425 ns  Iteration: 0  Process: /tb_soc_top/Always5_31  Scope: tb_soc_top  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_axi_monitor.svh Line: 113
+Error: TIMEOUT: completion marker not reached within 5000 cycles
+Time: 61505 ns  Iteration: 0  Process: /tb_soc_top/Initial100_38/run_wait  Scope: tb_soc_top.run_wait  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_soc_top.sv Line: 135
+
+============================================================
+FINAL ARCHITECTURAL SCOREBOARD
+============================================================
+Error: REG FAIL x15 expected=1234acf0 actual=00000001
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 25
+Error: REG FAIL x16 expected=00000001 actual=00000000
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 25
+Error: REG FAIL x17 expected=00000001 actual=000000fa
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 25
+Error: REG FAIL x18 expected=00000001 actual=0000000f
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 25
+Error: REG FAIL x19 expected=00000001 actual=00000000
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 25
+Error: REG FAIL x23 expected=00000001 actual=00000028
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 25
+Error: REG FAIL x24 expected=00000001 actual=00000005
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 25
+Error: REG FAIL x25 expected=000001bc actual=fffffffc
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 25
+Error: REG FAIL x26 expected=000001bc actual=12345000
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 25
+Error: REG FAIL x27 expected=000001e0 actual=000010b4
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 25
+Error: REG FAIL x28 expected=000001d8 actual=12345678
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 25
+Error: REG FAIL x29 expected=000001d8 actual=12345678
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 25
+Error: REG FAIL x30 expected=00000001 actual=00000000
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 25
+Error: DONE MARKER FAIL addr=000003f0 expected=00000001 actual=xxxxxxxx
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 46
+Error: MEM FAIL word=65 addr=00000104 expected=00808001 actual=xx808001
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 62
+Error: MEM FAIL word=135 addr=0000021c expected=1fffffff actual=ffffffff
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 62
+Error: MEM FAIL word=146 addr=00000248 expected=7ffffffc actual=fffffffc
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 62
+Error: MEM FAIL word=159 addr=0000027c expected=1234acf0 actual=xxxxxxxx
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 62
+Error: MEM FAIL word=160 addr=00000280 expected=00000001 actual=xxxxxxxx
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 62
+Error: MEM FAIL word=161 addr=00000284 expected=00000001 actual=xxxxxxxx
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 62
+Error: MEM FAIL word=162 addr=00000288 expected=00000001 actual=xxxxxxxx
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 62
+Error: MEM FAIL word=163 addr=0000028c expected=00000001 actual=xxxxxxxx
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 62
+Error: MEM FAIL word=164 addr=00000290 expected=00000001 actual=xxxxxxxx
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 62
+Error: MEM FAIL word=165 addr=00000294 expected=00000001 actual=xxxxxxxx
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 62
+Error: MEM FAIL word=167 addr=0000029c expected=000001bc actual=xxxxxxxx
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 62
+Error: MEM FAIL word=169 addr=000002a4 expected=000001d8 actual=xxxxxxxx
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 62
+Error: MEM FAIL word=252 addr=000003f0 expected=00000001 actual=xxxxxxxx
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 62
+Error: AXI transport errors = 4
+Time: 61555 ns  Iteration: 0  Process: /tb_soc_top/run_final_scoreboard  Scope: tb_soc_top.run_final_scoreboard  File: C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_scoreboard.svh Line: 100
+
+Reference instructions executed : 115
+Fetched instructions checked    : 5007
+CPU read requests              : 1208
+CPU write requests             : 34
+Scoreboard PASS items          : 49
+Scoreboard ERROR items         : 29
+
+============================================================
+SOC DIRECTED TEST SUMMARY
+============================================================
+Load errors          : 0
+Fetch errors         : 0
+Control errors       : 0
+Forwarding errors    : 0
+Transport errors     : 4
+AXI response errors  : 0
+Assertion failures   : 0
+Scoreboard errors    : 29
+============================================================
+******** FULL SOC DIRECTED TEST : FAIL ********
+$finish called at time : 61555 ns : File "C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_soc_top.sv" Line 172

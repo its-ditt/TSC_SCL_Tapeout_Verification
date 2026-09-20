@@ -1,17 +1,4 @@
 `timescale 1ns / 1ps
-// ======================================================
-// AXI Manager Module
-// + AXI Manager
-// + AXI4-Lite Version
-//
-// ------------------------------------------------------
-// Function
-// + Receives simple requests from the CPU: addr, data, we, re
-// --> Converts them into AXI signals: AW, W, B, AR, R
-//
-// ------------------------------------------------------
-// The AXI channels are controlled by an FSM
-// ======================================================
 
 module AXI_Manager #(
     parameter ADDR_WIDTH = 32,
@@ -37,7 +24,7 @@ module AXI_Manager #(
 
     // =============== AXI Write Data ===============
     output logic [DATA_WIDTH - 1:0]  axi_wdata,
-    output logic [DATA_WIDTH/8 - 1:0] axi_wstrb,    // Indicates which bytes of WDATA are valid and should be written (32/8 = 4 bytes)
+    output logic [DATA_WIDTH/8 - 1:0] axi_wstrb,
     output logic                     axi_wvalid,
     input  logic                     axi_wready,
 

@@ -96,12 +96,12 @@ logic [31:0] SrcBE;
 logic [31:0] ForwardAData;
 logic [31:0] ForwardBData;
 
-
 logic [31:0] ALUOut;
 logic zeroE;
 logic less_thanE;
 
 logic BranchTaken;
+
 
 //////////////////////////////////////////////////////
 // Forwarding MUX A
@@ -217,28 +217,6 @@ assign PcTargetE =
 
 assign PcSrcE = BranchTaken | jumpE;
 
-//////////////////////////////////////////////////////
-// EX/MEM Pipeline Register
-//
-// Priority (highest to lowest):
-//   1. rst_n        - async reset to zero
-//   2. StallM     - hold current values (APB not ready)
-//   3. FlushE     - insert bubble (branch/jump taken)
-//   4. normal     - latch new EX outputs
-//
-// WHY this priority order:
-//   - StallM beats FlushE: if a branch resolves at the
-//     same cycle an APB transaction is in progress, we
-//     must NOT flush the MEM stage contents - the memory
-//     op is mid-flight on the bus. Hold everything until
-//     pready, THEN the flush will naturally not apply
-//     anymore (PcSrcE will have been cleared by then).
-//
-//   - FlushE beats normal: a taken branch/jump must
-//     squash whatever is in the EX stage before it
-//     reaches MEM and writes registers or memory.
-//////////////////////////////////////////////////////
-
 always_ff @(posedge clk or negedge rst_n)
 begin
 
@@ -255,30 +233,9 @@ begin
         PcPlus4M    <= 32'd0;
         funct3M     <= 3'd0;
     end
-
-    
-    else if(FlushE)
-    begin
-        // --- 3. Branch/jump flush: insert NOP bubble ---
-        // Control signals zeroed so nothing writes to
-        // memory or registers from this slot.
-        RegWriteM   <= 1'b0;
-        ResultSrcM  <= 2'b00;
-        MemWriteM   <= 1'b0;
-        MemReadM    <= 1'b0;
-        ALUResultM  <= 32'd0;
-        WriteDataM  <= 32'd0;
-        RdM         <= 5'd0;
-        PcPlus4M    <= 32'd0;
-        funct3M     <= 3'd0;
-    end
-    
-    
+   
     else if(StallE)
     begin
-        // bus stall: freeze EX/MEM register ---
-        // All outputs hold their current values.
-        // Do NOT write anything - implicit in always_ff.
         RegWriteM   <= RegWriteM;
         ResultSrcM  <= ResultSrcM;
         MemWriteM   <= MemWriteM;
@@ -293,13 +250,12 @@ begin
 
     else
     begin
-        // --- 4. Normal operation: latch EX stage outputs ---
         RegWriteM   <= RegWriteE;
         ResultSrcM  <= ResultSrcE;
         MemWriteM   <= MemWriteE;
         MemReadM    <= MemReadE;
         ALUResultM  <= ALUOut;
-        WriteDataM  <= ForwardBData;  // forwarded store data
+        WriteDataM  <= ForwardBData; 
         RdM         <= RdE;
         PcPlus4M    <= PcPlus4E;
         funct3M     <= funct3E;

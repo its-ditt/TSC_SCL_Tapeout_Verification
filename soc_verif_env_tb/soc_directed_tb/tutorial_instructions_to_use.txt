@@ -1,0 +1,22 @@
+# Kushu Add these as simulation sources in this order, although
+# Vivado resolves module dependencies automatically.
+tb/tb_config.svh
+tb/program_image.svh
+tb/tb_reference_model.svh
+tb/tb_program_loader.svh
+tb/tb_axi_monitor.svh
+tb/tb_processor_monitor.svh
+tb/tb_scoreboard.svh
+tb/tb_assertions.svh
+tb/tb_coverage.svh
+tb/tb_soc_top.sv
+programs/rv32i_directed.S
+programs/program.hex
+
+
+# If you want to do it on Cadence or Synopsis... make sure you install python as our assembler is built in it... Fir usmei jo meine bash files bnayi h unka TCL equivalent bnaakar daal dena
+
+
+
+::::NEW PROGRAM KEISE DAALEY?::::
+Use the assembler given in tools folder.... apna program .S file mei likhna just like you do in GNU8085 .... usko call krna assembler mei using the bash file... for usage open the bash file.... output mei vo ek image file and hex file generate krdega...
