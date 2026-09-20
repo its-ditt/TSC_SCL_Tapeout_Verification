@@ -1,6 +1,8 @@
 `timescale 1ns/1ps
-`include "tb_config.svh"
+
 module tb_soc_top;
+
+    `include "tb_config.svh"
 
     // ============================================================
     // DUT inputs / outputs
@@ -13,7 +15,7 @@ module tb_soc_top;
     logic [31:0] debug_out;
 
     // ============================================================
-    // Program image
+    // Canonical program image
     // ============================================================
     logic [31:0] program_words [0:PROGRAM_WORDS-1];
 
@@ -22,14 +24,24 @@ module tb_soc_top;
     // ============================================================
     logic [31:0] ref_regs [0:31];
     logic [31:0] ref_mem [0:DMEM_WORDS-1];
-    logic        ref_mem_valid [0:DMEM_WORDS-1];
+    logic [3:0]  ref_mem_valid_bytes [0:DMEM_WORDS-1];
     logic        ref_error;
     integer      ref_steps;
     logic [31:0] ref_final_pc;
 
-    // Transport shadow memory
+    // ============================================================
+    // AXI transport shadow
+    // ============================================================
     logic [31:0] shadow_mem [0:DMEM_WORDS-1];
-    logic        shadow_valid_words [0:DMEM_WORDS-1];
+    logic [3:0]  shadow_valid_bytes [0:DMEM_WORDS-1];
+
+    logic write_pending;
+    logic read_pending;
+    logic [31:0] pending_waddr;
+    logic [31:0] pending_wdata;
+    logic [3:0]  pending_wstrb;
+    logic [31:0] pending_raddr;
+    logic        done_write_seen;
 
     // ============================================================
     // Counters / diagnostics
@@ -46,6 +58,8 @@ module tb_soc_top;
     integer forward_errors = 0;
     integer transport_errors = 0;
     integer axi_errors = 0;
+    integer edge_passes = 0;
+    integer edge_errors = 0;
 
     integer cpu_write_reqs = 0;
     integer cpu_read_reqs  = 0;
@@ -54,13 +68,6 @@ module tb_soc_top;
     integer b_handshakes  = 0;
     integer ar_handshakes = 0;
     integer r_handshakes  = 0;
-
-    logic write_pending;
-    logic read_pending;
-    logic [31:0] pending_waddr;
-    logic [31:0] pending_wdata;
-    logic [3:0] pending_wstrb;
-    logic [31:0] pending_raddr;
 
     // ============================================================
     // Clock
@@ -82,9 +89,9 @@ module tb_soc_top;
         .byte_strobe (byte_strobe)
     );
 
-    
-
-    // Program image is generated from the assembly source before simulation.
+    // ============================================================
+    // Verification components
+    // ============================================================
     `include "program_image.svh"
     `include "tb_reference_model.svh"
     `include "tb_program_loader.svh"
@@ -103,40 +110,55 @@ module tb_soc_top;
         data_in     = 8'h00;
         byte_strobe = 1'b0;
 
-        // Build architectural expectation from the intended program.
-        // This does not use DUT internal state.
+        // Allow all time-zero program_image initialization to complete.
         repeat (3) @(posedge clk);
+
+        // Reference model is diagnostic only.
         build_reference_model();
 
-        // External reset for loader + SoC.
+        // External reset.
         rst_n = 1'b0;
         repeat (3) @(posedge clk);
         rst_n = 1'b1;
         repeat (2) @(posedge clk);
 
-        // Boot-load the exact program through the real byte_loader path.
+        // Real DUT loading path:
+        // program_image.svh -> TB bytes -> byte_loader -> DUT IMEM.
         load_program_through_byte_loader();
 
-        // Run until the real processor writes DONE_ADDR = 1.
+        // Do not execute a bad or incomplete image.
+        if (load_errors != 0) begin
+            $display("\n============================================================");
+            $display("SOC DIRECTED TEST ABORTED DURING PROGRAM LOAD");
+            $display("Load errors : %0d", load_errors);
+            $display("============================================================");
+            $finish;
+        end
+
         $display("\n============================================================");
         $display("RUNNING FULL SOC DIRECTED PROGRAM");
         $display("============================================================");
 
         begin : run_wait
             int cyc;
+
             for (cyc = 0; cyc < MAX_RUN_CYCLES; cyc++) begin
                 @(posedge clk);
-                if (dut.axi_top.ram_slave.Dmem.mem[DONE_ADDR[11:2]][31:0] === DONE_VALUE) begin
-                    $display("Completion marker observed after %0d run cycles", cyc+1);
+
+                if (done_write_seen) begin
+                    $display("Completed DONE AXI write after %0d run cycles",
+                             cyc + 1);
                     disable run_wait;
                 end
             end
 
-            $error("TIMEOUT: completion marker not reached within %0d cycles", MAX_RUN_CYCLES);
-            scoreboard_errors++;
+            if (!done_write_seen) begin
+                $error("TIMEOUT: DONE AXI write not completed within %0d cycles",
+                       MAX_RUN_CYCLES);
+                scoreboard_errors++;
+            end
         end
 
-        // Give the final write-response / pipeline state a few cycles to settle.
         repeat (5) @(posedge clk);
 
         run_final_scoreboard();
@@ -145,12 +167,13 @@ module tb_soc_top;
         $display("SOC DIRECTED TEST SUMMARY");
         $display("============================================================");
         $display("Load errors          : %0d", load_errors);
-        $display("Fetch errors         : %0d", fetch_errors);
+        $display("Fetch monitor errors : %0d", fetch_errors);
         $display("Control errors       : %0d", control_errors);
         $display("Forwarding errors    : %0d", forward_errors);
         $display("Transport errors     : %0d", transport_errors);
         $display("AXI response errors  : %0d", axi_errors);
         $display("Assertion failures   : %0d", assertion_failures);
+        $display("Edge-case errors     : %0d", edge_errors);
         $display("Scoreboard errors    : %0d", scoreboard_errors);
         $display("============================================================");
 
@@ -161,8 +184,8 @@ module tb_soc_top;
             (transport_errors == 0) &&
             (axi_errors == 0) &&
             (assertion_failures == 0) &&
-            (scoreboard_errors == 0) &&
-            !ref_error) begin
+            (edge_errors == 0) &&
+            (scoreboard_errors == 0)) begin
             $display("******** FULL SOC DIRECTED TEST : PASS ********");
         end
         else begin

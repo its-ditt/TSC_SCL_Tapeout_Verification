@@ -1,0 +1,19 @@
+Constrained edge cases checked separately by tb_scoreboard.svh
+
+1  Immediate minimum: -2048
+2  Immediate maximum: +2047
+3  Signed ADD wraparound
+4  Arithmetic right shift sign preservation
+5  SLT vs SLTU signed/unsigned boundary
+6  Register shift amount 32 masked to five bits
+7  x0 immutability
+8  SB byte lanes 0,1,2,3
+9  SH low and high halfword lanes
+10 LB vs LBU
+11 LH vs LHU
+12 Backward branch taken once and then not taken
+13 Signed overflow 0x7fffffff + 1
+14 JALR link value and bit-0 clearing
+15 JAL wrong-path store must remain unwritten
+16 JALR wrong-path store must remain unwritten
+17 Immediate boundary result signatures

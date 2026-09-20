@@ -1,0 +1,17 @@
+00000300 ffffffff ADD signed wrap boundary
+00000304 ffffffff SRA sign preservation shift-31
+00000308 00000001 SLT signed boundary
+0000030c 00000000 SLTU unsigned boundary
+00000310 00000001 Register shift amount mask (32)
+00000314 00000000 x0 immutability
+00000318 aaaaaaaa SB all byte lanes
+0000031c beefbeef SH low/high lanes
+00000320 ffffff80 LB sign extension
+00000324 00000080 LBU zero extension
+00000328 ffff8001 LH sign extension
+0000032c 00008001 LHU zero extension
+00000330 00000000 Backward branch taken/not-taken
+00000334 80000000 Signed overflow wrap
+00000338 000002d4 JALR link + bit0 clear
+0000033c fffff800 ADDI minimum immediate
+00000340 000007ff ADDI maximum immediate

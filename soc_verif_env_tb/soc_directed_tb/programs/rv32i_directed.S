@@ -214,11 +214,107 @@ jalr_target:
     sw   x29, 164(x21)
 
     # ------------------------------------------------------------
+    # CONSTRAINED EDGE-CASE SUITE
+    # These results are checked separately by tb_edge_case_scoreboard.
+    # EDGE_BASE   = 0x300
+    # EDGE_SCRATCH= 0x380
+    # ------------------------------------------------------------
+    addi x31, x0, 0x300
+
+    # Immediate boundary + signed wrap
+    addi x1, x0, -2048
+    addi x2, x0, 2047
+    add  x3, x1, x2
+    sw   x3, 0(x31)
+    srai x4, x3, 31
+    sw   x4, 4(x31)
+
+    # Signed-vs-unsigned comparison boundary
+    lui  x5, 0x80000
+    addi x6, x0, 1
+    slt  x7, x5, x6
+    sltu x8, x5, x6
+    sw   x7, 8(x31)
+    sw   x8, 12(x31)
+
+    # Register shift amount 32 -> RV32 masks to 0
+    addi x9, x0, 1
+    addi x10, x0, 32
+    sll  x11, x9, x10
+    sw   x11, 16(x31)
+
+    # x0 must remain zero
+    addi x0, x0, 123
+    addi x12, x0, 0
+    sw   x12, 20(x31)
+
+    # SB across every byte lane
+    addi x30, x0, 0x380
+    addi x13, x0, 0xaa
+    sb   x13, 0(x30)
+    sb   x13, 1(x30)
+    sb   x13, 2(x30)
+    sb   x13, 3(x30)
+    lw   x14, 0(x30)
+    sw   x14, 24(x31)
+
+    # SH on low and high halfword lanes
+    lui  x15, 0xC
+    addi x15, x15, -273       # 0x0000BEEF
+    sh   x15, 0(x30)
+    sh   x15, 2(x30)
+    lw   x16, 0(x30)
+    sw   x16, 28(x31)
+
+    # Signed/unsigned byte loads
+    addi x17, x0, -128
+    sb   x17, 8(x30)
+    lb   x18, 8(x30)
+    lbu  x19, 8(x30)
+    sw   x18, 32(x31)
+    sw   x19, 36(x31)
+
+    # Signed/unsigned halfword loads
+    lui  x26, 0xffff8
+    addi x26, x26, 1
+    sh   x26, 10(x30)
+    lh   x27, 10(x30)
+    lhu  x28, 10(x30)
+    sw   x27, 40(x31)
+    sw   x28, 44(x31)
+
+    # Backward branch: one taken, then one not-taken
+    addi x23, x0, 2
+edge_branch_loop:
+    addi x23, x23, -1
+    bne  x23, x0, edge_branch_loop
+    sw   x23, 48(x31)
+
+    # Signed overflow: 0x7fffffff + 1
+    lui  x24, 0x80000
+    addi x24, x24, -1
+    addi x25, x24, 1
+    sw   x25, 52(x31)
+
+    # JALR bit-0 clearing + link value
+    auipc x19, 0
+    addi  x19, x19, 20
+    addi  x19, x19, 1
+    jalr  x20, 0(x19)
+    addi  x21, x0, 99       # wrong path: must not update result
+edge_jalr_target:
+    addi  x21, x20, 0
+    sw    x21, 56(x31)
+
+    # Immediate boundary signatures
+    sw   x1, 60(x31)
+    sw   x2, 64(x31)
+
+    # ------------------------------------------------------------
     # Final completion marker
     # ------------------------------------------------------------
     addi x30, x0, 1
     sw   x30, 0(x22)
 
-    # No architectural need to execute beyond completion.
     nop
     nop
