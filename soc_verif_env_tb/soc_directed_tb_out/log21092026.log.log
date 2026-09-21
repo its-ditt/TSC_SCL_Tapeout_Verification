@@ -1,0 +1,107 @@
+source tb_soc_top.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+
+============================================================
+SOC PROGRAM LOAD
+Source  : program_image.svh
+Words   : 190
+============================================================
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_soc_top_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:09 ; elapsed = 00:00:23 . Memory (MB): peak = 1803.574 ; gain = 0.000
+run all
+Instruction load complete. Verifying SRAM contents...
+IMEM verification: PASS (190 words)
+
+============================================================
+RUNNING FULL SOC DIRECTED PROGRAM
+============================================================
+Completed DONE AXI write after 474 run cycles
+
+============================================================
+FINAL ARCHITECTURAL SCOREBOARD
+============================================================
+DONE AXI write: PASS
+
+============================================================
+MAIN DIRECTED SIGNATURE SCOREBOARD
+============================================================
+CONTROL NEGATIVE CHECK PASS             JAL wrong-path store addr=00000298 remains unwritten
+CONTROL NEGATIVE CHECK PASS            JALR wrong-path store addr=000002a0 remains unwritten
+
+============================================================
+CONSTRAINED EDGE-CASE SCOREBOARD
+============================================================
+1. Immediate boundary: -2048 and +2047
+2. Signed ADD wraparound
+3. Arithmetic right shift preserves sign
+4. SLT vs SLTU boundary
+5. Register shift amount 32 is masked to 5 bits
+6. x0 remains immutable
+7. SB byte lanes 0/1/2/3
+8. SH lower and upper halfword lanes
+9. LB/LBU sign vs zero extension
+10. LH/LHU sign vs zero extension
+11. Backward branch taken once, then not taken
+12. Signed overflow: 0x7fffffff + 1
+13. JALR link value and bit-0 clearing
+EDGE PASS           ADD signed wrap boundary addr=00000300 value=ffffffff
+EDGE PASS     SRA sign preservation shift-31 addr=00000304 value=ffffffff
+EDGE PASS                SLT signed boundary addr=00000308 value=00000001
+EDGE PASS             SLTU unsigned boundary addr=0000030c value=00000000
+EDGE PASS    Register shift amount mask (32) addr=00000310 value=00000001
+EDGE PASS                    x0 immutability addr=00000314 value=00000000
+EDGE PASS                  SB all byte lanes addr=00000318 value=aaaaaaaa
+EDGE PASS                  SH low/high lanes addr=0000031c value=beefbeef
+EDGE PASS                  LB sign extension addr=00000320 value=ffffff80
+EDGE PASS                 LBU zero extension addr=00000324 value=00000080
+EDGE PASS                  LH sign extension addr=00000328 value=ffff8001
+EDGE PASS                 LHU zero extension addr=0000032c value=00008001
+EDGE PASS    Backward branch taken/not-taken addr=00000330 value=00000000
+EDGE PASS               Signed overflow wrap addr=00000334 value=80000000
+EDGE PASS             JALR link + bit0 clear addr=00000338 value=000002d4
+EDGE PASS             ADDI minimum immediate addr=0000033c value=fffff800
+EDGE PASS             ADDI maximum immediate addr=00000340 value=000007ff
+EDGE-CASE PASS : 17
+EDGE-CASE FAIL : 0
+
+============================================================
+REFERENCE MODEL DIAGNOSTIC (NON-GATING)
+============================================================
+REFERENCE MODEL : reached completion
+Reference instructions executed : 180
+Reference final PC              : 000002f0
+NOTE: Reference-model results do not determine pass/fail.
+
+Fetched instructions observed : 451
+CPU read requests             : 16
+CPU write requests            : 69
+Main signature checks         : 40
+Edge-case checks              : 17
+Scoreboard PASS items         : 60
+Scoreboard ERROR items        : 0
+
+============================================================
+SOC DIRECTED TEST SUMMARY
+============================================================
+Load errors          : 0
+Fetch monitor errors : 0
+Control errors       : 0
+Forwarding errors    : 0
+Transport errors     : 0
+AXI response errors  : 0
+Assertion failures   : 0
+Edge-case errors     : 0
+Scoreboard errors    : 0
+============================================================
+******** FULL SOC DIRECTED TEST : PASS ********
+$finish called at time : 22055 ns : File "C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_soc_top.sv" Line 195

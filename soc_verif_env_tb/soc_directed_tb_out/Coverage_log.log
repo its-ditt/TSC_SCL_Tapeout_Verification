@@ -1,0 +1,59 @@
+run all
+IMEM word0 : expected=10000a13 actual=10000a13
+IMEM word1 : expected=20000a93 actual=20000a93
+IMEM verification: PASS (190 words)
+COV OBS 0: PC=00000000 INSTR=10000a13 OPCODE=13 F3=0 F7=08
+COV OBS 1: PC=00000004 INSTR=20000a93 OPCODE=13 F3=0 F7=10
+COV OBS 2: PC=00000008 INSTR=3f000b13 OPCODE=13 F3=0 F7=1f
+
+============================================================
+SOC FUNCTIONAL COVERAGE RUN
+============================================================
+COV OBS 3: PC=0000000c INSTR=00a00093 OPCODE=13 F3=0 F7=00
+COV OBS 4: PC=00000010 INSTR=00300113 OPCODE=13 F3=0 F7=00
+COV OBS 5: PC=00000014 INSTR=ff900193 OPCODE=13 F3=0 F7=7f
+COV OBS 6: PC=00000018 INSTR=00208233 OPCODE=33 F3=0 F7=00
+COV OBS 7: PC=0000001c INSTR=402082b3 OPCODE=33 F3=0 F7=20
+COV OBS 8: PC=00000020 INSTR=00209333 OPCODE=33 F3=1 F7=00
+COV OBS 9: PC=00000024 INSTR=0021a3b3 OPCODE=33 F3=2 F7=00
+COV OBS 10: PC=00000028 INSTR=00203433 OPCODE=33 F3=3 F7=00
+COV OBS 11: PC=0000002c INSTR=0020c4b3 OPCODE=33 F3=4 F7=00
+COV OBS 12: PC=00000030 INSTR=0020d533 OPCODE=33 F3=5 F7=00
+COV OBS 13: PC=00000034 INSTR=4021d5b3 OPCODE=33 F3=5 F7=20
+COV OBS 14: PC=00000038 INSTR=0020e633 OPCODE=33 F3=6 F7=00
+COV OBS 15: PC=0000003c INSTR=0020f6b3 OPCODE=33 F3=7 F7=00
+COV OBS 16: PC=00000040 INSTR=004aa023 OPCODE=23 F3=2 F7=00
+COV OBS 17: PC=00000044 INSTR=005aa223 OPCODE=23 F3=2 F7=00
+COV OBS 18: PC=00000048 INSTR=006aa423 OPCODE=23 F3=2 F7=00
+COV OBS 19: PC=00000048 INSTR=006aa423 OPCODE=23 F3=2 F7=00
+COV OBS 20: PC=00000048 INSTR=006aa423 OPCODE=23 F3=2 F7=00
+COV OBS 21: PC=00000048 INSTR=006aa423 OPCODE=23 F3=2 F7=00
+COV OBS 22: PC=0000004c INSTR=007aa623 OPCODE=23 F3=2 F7=00
+COV OBS 23: PC=0000004c INSTR=007aa623 OPCODE=23 F3=2 F7=00
+COV OBS 24: PC=0000004c INSTR=007aa623 OPCODE=23 F3=2 F7=00
+COV OBS 25: PC=0000004c INSTR=007aa623 OPCODE=23 F3=2 F7=00
+COV OBS 26: PC=00000050 INSTR=008aa823 OPCODE=23 F3=2 F7=00
+COV OBS 27: PC=00000050 INSTR=008aa823 OPCODE=23 F3=2 F7=00
+COV OBS 28: PC=00000050 INSTR=008aa823 OPCODE=23 F3=2 F7=00
+COV OBS 29: PC=00000050 INSTR=008aa823 OPCODE=23 F3=2 F7=00
+
+============================================================
+SOC FUNCTIONAL COVERAGE SUMMARY
+============================================================
+Overall functional coverage : 94.60%
+Opcode coverage             : 100.00%
+funct3 coverage             : 100.00%
+R-type funct7 coverage      : 100.00%
+Load type coverage          : 100.00%
+Store type coverage         : 100.00%
+Branch type coverage        : 100.00%
+WSTRB coverage              : 100.00%
+Memory activity coverage    : 100.00%
+Opcode x funct3 coverage    : 51.39%
+Decode observations         : 6005
+Non-NOP instructions        : 2255
+Memory read requests        : 80
+Memory write requests       : 345
+Loader bytes driven         : 760
+============================================================
+$finish called at time : 75326 ns : File "C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_soc_coverage.sv" Line 348
