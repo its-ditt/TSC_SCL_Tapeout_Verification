@@ -9,9 +9,10 @@ module tb_soc_coverage;
     logic clk;
     logic rst_n;
     logic load_mode;
-    logic [7:0] data_in;
-    logic byte_strobe;
-    logic [31:0] debug_out;
+    logic [1:0] data_in;
+    logic qbit_strobe;
+    // logic [31:0] debug_out;
+    logic [31:0] result_out;
 
     logic [31:0] program_words [0:PROGRAM_WORDS-1];
 
@@ -19,13 +20,13 @@ module tb_soc_coverage;
 
     logic [31:0] cov_instr;
     logic [6:0]  cov_opcode;
-    logic [2:0]  cov_funct3;
+    logic [2:0]  cov_funct3; 
     logic [6:0]  cov_funct7;
     logic [3:0]  cov_wstrb;
     logic        cov_mem_read;
     logic        cov_mem_write;
 
-    integer loader_byte_count;
+    integer loader_qbit_count;
     integer imem_errors;
     integer instr_sample_count;
     integer non_nop_instr_count;
@@ -148,8 +149,9 @@ module tb_soc_coverage;
         .rst_n       (rst_n),
         .load_mode   (load_mode),
         .data_in     (data_in),
-        .byte_strobe (byte_strobe),
-        .debug_out   (debug_out)
+        .qbit_strobe (qbit_strobe),
+        // .debug_out   (debug_out)
+        .result_out  (result_out)
     );
 
     initial clk = 1'b0;
@@ -160,46 +162,47 @@ module tb_soc_coverage;
     //
     // IMPORTANT:
     // ext rst_n must be HIGH during loading.
-    // byte_loader uses ext_rst_n as its own reset.
+    // qbit_loader uses ext_rst_n as its own reset.
     // The CPU remains in reset because core_rst_n =
     // ext_rst_n & ~load_mode.
     // ------------------------------------------------------------
     task automatic load_program();
         int i, b;
-        logic [7:0] byte_value;
+        logic [1:0] qbit_value;
 
         begin
             rst_n       = 1'b0;
             load_mode   = 1'b0;
-            data_in     = 8'h00;
-            byte_strobe = 1'b0;
+            data_in     = 2'b00;
+            qbit_strobe = 1'b0;
 
             repeat (3) @(posedge clk);
 
-            // Release byte_loader reset, but keep CPU reset active.
+            // Release qbit_loader reset, but keep CPU reset active.
             rst_n     = 1'b1;
             load_mode = 1'b1;
 
             repeat (2) @(posedge clk);
 
             for (i = 0; i < PROGRAM_WORDS; i++) begin
-                for (b = 0; b < 4; b++) begin
+                for (b = 0; b < 16; b++) begin
 
-                    byte_value = program_words[i][8*b +: 8];
+                    qbit_value = program_words[i][2*b +: 2];
 
-                    data_in     = byte_value;
-                    byte_strobe = 1'b1;
+                    data_in     = qbit_value;
+                    qbit_strobe = 1'b1;
 
                     @(posedge clk);
 
-                    byte_strobe = 1'b0;
-                    loader_byte_count++;
+                    qbit_strobe = 1'b0;
+                    loader_qbit_count++;
 
                     @(posedge clk);
                 end
             end
 
-            data_in = 8'h00;
+            // data_in = 8'h00;
+            data_in = 2'b00;
 
             // Give final instruction write time to land in SRAM.
             repeat (3) @(posedge clk);
@@ -209,6 +212,7 @@ module tb_soc_coverage;
 
             for (i = 0; i < PROGRAM_WORDS; i++) begin
                 if (dut.Imem.mem[i][31:0] !== program_words[i]) begin
+                //if (dut.Imem.mem[i*4][31:0] !== program_words[i]) begin
                     if (imem_errors < 10) begin
                         $display("IMEM ERROR word=%0d expected=%08h actual=%08h",
                                  i, program_words[i], dut.Imem.mem[i][31:0]);
@@ -283,7 +287,7 @@ module tb_soc_coverage;
     // ------------------------------------------------------------
     initial begin
 
-        loader_byte_count   = 0;
+        loader_qbit_count   = 0;
         imem_errors         = 0;
         instr_sample_count  = 0;
         non_nop_instr_count = 0;
@@ -341,8 +345,8 @@ module tb_soc_coverage;
                  axi_read_count);
         $display("Memory write requests       : %0d",
                  axi_write_count);
-        $display("Loader bytes driven         : %0d",
-                 loader_byte_count);
+        $display("Loader qbits driven         : %0d",
+                 loader_qbit_count);
         $display("============================================================");
 
         $finish;

@@ -15,6 +15,7 @@ module decode_stage(
 
     input logic StallD,
     input logic FlushD,
+    input logic FlushE,
 
     output logic RegWriteE,
     output logic [1:0] ResultSrcE,
@@ -161,7 +162,7 @@ begin
     end
 
     // Flush
-    else if(FlushD)
+    else if(FlushD || FlushE)
     begin
 
         RegWriteE   <= 0;

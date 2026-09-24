@@ -10,7 +10,7 @@
 // ============================================================
 
 task automatic check_signature_word(
-    input logic [31:0] addr,
+    input logic [31:0] addr, 
     input logic [31:0] expected,
     input string section
 );

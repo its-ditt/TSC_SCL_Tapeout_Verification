@@ -84,7 +84,7 @@ assign StallE = bus_stall;
 // FLUSHES
 //////////////////////////////////////////////////////
 
-assign FlushD = PcSrcE;
+assign FlushD = PcSrcE & ~bus_stall;
 
 assign FlushE = (lw_stall | PcSrcE) & ~bus_stall;
 

@@ -89,7 +89,7 @@ end
 always_comb begin
 
     load_byte = MEM_RDATA >> (8*A[1:0]);
-    load_half = MEM_RDATA >> (8*A[  0]);
+    load_half = MEM_RDATA >> (8*A[1:0]);
 
     case(funct3M)
 

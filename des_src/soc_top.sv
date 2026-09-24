@@ -1,11 +1,11 @@
 module soc_top( 
     input  logic        clk,
     input  logic        rst_n,
-    output logic [31:0] debug_out,
+    output logic [31:0] result_out,
 //Byte Loading
     input  logic        load_mode,    // 1 = boot-load mode, 0 = run mode both rst_n and load can cause the core to reset
-    input  logic [7:0]  data_in,
-    input  logic        byte_strobe  //Tells the loader when to sample the input byte
+    input  logic [1:0]  data_in,
+    input  logic        qbit_strobe  //Tells the loader when to sample the input qbit
 ); 
 
 //Pipeline Instruction Bus
@@ -33,12 +33,12 @@ logic [ 3:0] MEM_WSTRB;
 logic [31:0] MEM_RDATA;
 
 
-byte_loader instr_in(
+qbit_loader instr_in(
     .ext_clk     (clk),
     .ext_rst_n   (rst_n),
     .load_mode   (load_mode),
     .data_in     (data_in),
-    .byte_strobe (byte_strobe),
+    .qbit_strobe (qbit_strobe),
     
     .core_rst_n  (core_rst_n),
     .instr_waddr (ldr_waddr),
@@ -62,7 +62,7 @@ pipeline_top cpu (
 
     .clk(clk),
     .rst_n(core_rst_n),
-    .debug_out(debug_out),
+    .debug_out(result_out),
      
      //AXI
     .MEM_WRITE   (   MEM_WRITE),

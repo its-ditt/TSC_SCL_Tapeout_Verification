@@ -67,9 +67,10 @@ endfunction
 
 function automatic logic [31:0] ref_load_lh(input logic [31:0] addr);
     logic [15:0] h;
-    logic [1:0] mask;
+    // logic [1:0] mask;
+    logic [3:0] mask;
     begin
-        mask = addr[1] ? 2'b1100 : 2'b0011;
+        mask = addr[1] ? 4'b1100 : 4'b0011;
         if ((ref_mem_valid_bytes[addr[11:2]] & mask) == mask) begin
             h = ref_mem[addr[11:2]][16*addr[1] +: 16];
             ref_load_lh = {{16{h[15]}}, h};
@@ -81,9 +82,10 @@ function automatic logic [31:0] ref_load_lh(input logic [31:0] addr);
 endfunction
 
 function automatic logic [31:0] ref_load_lhu(input logic [31:0] addr);
-    logic [1:0] mask;
+    // logic [1:0] mask;
+    logic [3:0] mask;
     begin
-        mask = addr[1] ? 2'b1100 : 2'b0011;
+        mask = addr[1] ? 4'b1100 : 4'b0011;
         if ((ref_mem_valid_bytes[addr[11:2]] & mask) == mask)
             ref_load_lhu = {16'b0, ref_mem[addr[11:2]][16*addr[1] +: 16]};
         else
@@ -304,3 +306,4 @@ task automatic build_reference_model();
         ref_regs[0] = 32'd0;
     end
 endtask
+//byte

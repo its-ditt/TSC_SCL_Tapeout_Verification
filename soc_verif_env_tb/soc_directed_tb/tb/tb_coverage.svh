@@ -72,11 +72,47 @@ covergroup soc_coverage @(posedge clk);
         bins read_data = {3'b100};
     }
 
-    cp_load_byte_count : coverpoint dut.instr_in.byte_cnt iff (load_mode) {
-        bins b0 = {0};
-        bins b1 = {1};
-        bins b2 = {2};
-        bins b3 = {3};
+//     // LEGACY BYTE-COUNT COVERPOINT - retained for traceability only.
+//     cp_load_byte_count : coverpoint dut.instr_in.byte_cnt iff (load_mode) {
+//         bins b0 = {0};
+//         bins b1 = {1};
+//         bins b2 = {2};
+//         bins b3 = {3};
+//         /*
+//         bins b4 = {4};
+//         bins b5 = {5};
+//         bins b6 = {6};
+//         bins b7 = {7};
+//         bins b8 = {8};
+//         bins b9 = {9};
+//         bins b10 = {10};
+//         bins b11 = {11}};
+//         bins b12 = {12};
+//         bins b13= {13};
+//         bins b14= {14};
+//         bins b15= {15};
+//         */
+//     }
+//     */
+
+    // CURRENT 2-BIT QBIT COVERPOINT
+    cp_load_qbit_count : coverpoint dut.instr_in.qbit_cnt iff (load_mode) {
+        bins q0  = {0};
+        bins q1  = {1};
+        bins q2  = {2};
+        bins q3  = {3};
+        bins q4  = {4};
+        bins q5  = {5};
+        bins q6  = {6};
+        bins q7  = {7};
+        bins q8  = {8};
+        bins q9  = {9};
+        bins q10 = {10};
+        bins q11 = {11};
+        bins q12 = {12};
+        bins q13 = {13};
+        bins q14 = {14};
+        bins q15 = {15};
     }
 
     cross_load_store : cross cp_opcode, cp_cpu_mem;

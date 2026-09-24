@@ -6,7 +6,7 @@
 // Only valid bytes are compared on AXI reads.
 // ============================================================
 
-always @(posedge clk) begin
+always @(posedge clk) begin //byte
     if (!rst_n) begin
         cpu_write_reqs     <= 0;
         cpu_read_reqs      <= 0;
@@ -55,6 +55,102 @@ always @(posedge clk) begin
                     dut.cpu.MEM_WDATA[31:24];
                 shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][3] <= 1'b1;
             end
+
+            /*if (dut.cpu.MEM_WSTRB[0]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][1:0] <=
+                    dut.cpu.MEM_WDATA[1:0];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][0] <= 1'b1;
+            end
+
+            if (dut.cpu.MEM_WSTRB[1]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][3:2] <=
+                    dut.cpu.MEM_WDATA[3:2];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][1] <= 1'b1;
+            end
+
+            if (dut.cpu.MEM_WSTRB[2]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][5:4] <=
+                    dut.cpu.MEM_WDATA[5:4];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][2] <= 1'b1;
+            end
+
+            if (dut.cpu.MEM_WSTRB[3]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][7:6] <=
+                    dut.cpu.MEM_WDATA[7:6];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][3] <= 1'b1;
+            end
+
+            if (dut.cpu.MEM_WSTRB[4]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][9:8] <=
+                    dut.cpu.MEM_WDATA[9:8];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][4] <= 1'b1;
+            end
+
+            if (dut.cpu.MEM_WSTRB5[5]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][11:10] <=
+                    dut.cpu.MEM_WDATA[11:10];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][5] <= 1'b1;
+            end
+
+            if (dut.cpu.MEM_WSTRB[6]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][13:12] <=
+                    dut.cpu.MEM_WDATA[13:12];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][6] <= 1'b1;
+            end
+
+            if (dut.cpu.MEM_WSTRB[7]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][15:14] <=
+                    dut.cpu.MEM_WDATA[15:14];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][7] <= 1'b1;
+            end
+
+            if (dut.cpu.MEM_WSTRB[8]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][17:16] <=
+                    dut.cpu.MEM_WDATA[17:16];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][8] <= 1'b1;
+            end
+
+            if (dut.cpu.MEM_WSTRB[9]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][19:18] <=
+                    dut.cpu.MEM_WDATA[19:18];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][9] <= 1'b1;
+            end
+
+            if (dut.cpu.MEM_WSTRB[10]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][21:20] <=
+                    dut.cpu.MEM_WDATA[21:20];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][10] <= 1'b1;
+            end
+
+            if (dut.cpu.MEM_WSTRB[11]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][23:22] <=
+                    dut.cpu.MEM_WDATA[23:22];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][11] <= 1'b1;
+            end
+
+            if (dut.cpu.MEM_WSTRB[12]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][25:24] <=
+                    dut.cpu.MEM_WDATA[25:24];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][12] <= 1'b1;
+            end
+
+            if (dut.cpu.MEM_WSTRB[13]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][27:26] <=
+                    dut.cpu.MEM_WDATA[27:26];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][13] <= 1'b1;
+            end
+
+            if (dut.cpu.MEM_WSTRB[14]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][29:28] <=
+                    dut.cpu.MEM_WDATA[29:28];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][14] <= 1'b1;
+            end
+            if (dut.cpu.MEM_WSTRB[15]) begin
+                shadow_mem[dut.cpu.MEM_ADDR[11:2]][31:30] <=
+                    dut.cpu.MEM_WDATA[31:30];
+                shadow_valid_bytes[dut.cpu.MEM_ADDR[11:2]][15] <= 1'b1;
+            end*/
+            
         end
 
         // CPU-side read request.
@@ -167,7 +263,7 @@ always @(posedge clk) begin
                     if (valid_mask[byte_idx]) begin
                         if (dut.axi_top.manager.axi_rdata[byte_idx*8 +: 8] !==
                             expected_word[byte_idx*8 +: 8]) begin
-                            $error("AXI MONITOR: RDATA byte mismatch addr=%08h byte=%0d expected=%02h actual=%02h",
+                            $error("AXI MONITOR: RDATA byte mismatch addr=%08h byte_idx=%0d expected=%02h actual=%02h",
                                    pending_raddr,
                                    byte_idx,
                                    expected_word[byte_idx*8 +: 8],

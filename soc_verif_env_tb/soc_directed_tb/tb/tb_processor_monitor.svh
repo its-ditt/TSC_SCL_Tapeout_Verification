@@ -7,7 +7,7 @@
 // stalls and redirect flushing.
 // ============================================================
 
-always @(posedge clk) begin
+always @(posedge clk) begin 
     if (rst_n && !load_mode && dut.core_rst_n) begin
 
         // Basic fetch sanity only: deterministic decoded PC alignment.

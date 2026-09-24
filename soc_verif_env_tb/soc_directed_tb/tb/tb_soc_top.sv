@@ -10,9 +10,10 @@ module tb_soc_top;
     logic clk;
     logic rst_n;
     logic load_mode;
-    logic [7:0] data_in;
-    logic byte_strobe;
-    logic [31:0] debug_out;
+    logic [1:0] data_in;
+    logic qbit_strobe;
+    // logic [31:0] debug_out;
+    logic [31:0] result_out;
 
     // ============================================================
     // Canonical program image
@@ -83,10 +84,11 @@ module tb_soc_top;
     soc_top dut (
         .clk         (clk),
         .rst_n       (rst_n),
-        .debug_out   (debug_out),
+        // .debug_out   (debug_out),
+        .result_out  (result_out),
         .load_mode   (load_mode),
         .data_in     (data_in),
-        .byte_strobe (byte_strobe)
+        .qbit_strobe (qbit_strobe)
     );
 
     // ============================================================
@@ -107,8 +109,9 @@ module tb_soc_top;
     initial begin
         rst_n       = 1'b0;
         load_mode   = 1'b0;
-        data_in     = 8'h00;
-        byte_strobe = 1'b0;
+        // data_in     = 8'h00;
+        data_in     = 2'b00;
+        qbit_strobe = 1'b0;
 
         // Allow all time-zero program_image initialization to complete.
         repeat (3) @(posedge clk);
@@ -123,8 +126,9 @@ module tb_soc_top;
         repeat (2) @(posedge clk);
 
         // Real DUT loading path:
-        // program_image.svh -> TB bytes -> byte_loader -> DUT IMEM.
-        load_program_through_byte_loader();
+        // program_image.svh -> TB qbits -> qbit_loader -> DUT IMEM.
+        // load_program_through_byte_loader();
+        load_program_through_qbit_loader();
 
         // Do not execute a bad or incomplete image.
         if (load_errors != 0) begin
