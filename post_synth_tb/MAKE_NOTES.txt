@@ -1,0 +1,8 @@
+List of files humey jrurt h jinki
+- SCL standard cells
+- SCL IO cells
+- SPRAM_1024x36
+- optional SDF for timing GLS
+
+Pehle without annotation run hoga 
+Run SDF-annotated simulation only after zero-delay GLS is clean.

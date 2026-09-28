@@ -1,0 +1,218 @@
+relaunch_sim
+Command: launch_simulation -step compile -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Thu Sep 24 20:09:26 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_soc_top'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/iitm_bs/NAYA_KUCHH_TO/NAYA_KUCHH_TO.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/iitm_bs/NAYA_KUCHH_TO/NAYA_KUCHH_TO.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L uvm -prj tb_soc_top_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/ALU.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/ALU_Decoder.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU_Decoder
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/Adder.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Adder
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/Data_RAM.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SPRAM_1024x36
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/Execute_stage.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Execute_stage
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/IF.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IF
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/MUX_2_1.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MUX_2_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/Pc_Module.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Pc_Module
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/Pc_adder.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Pc_adder
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/axi_manager.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AXI_Manager
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/axi_ram_slave.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AXI_RAM_Slave
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/axi_top2.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AXI_TOP
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/byte_loader.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module qbit_loader
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/control_unit_top.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_unit_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/data_mem_stage.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_mem_stage
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/data_memory.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module jtsc_dmem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/decode_stage.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module decode_stage
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/hazard_unit.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module hazard_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/inst_memory.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module inst_memory
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/main_decoder.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module main_decoder
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/mem_mux.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_port_mux
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/mux_3_1.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mux_3_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/pipeline_top.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pipeline_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/registerfile.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module registerfile
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/sign_extend.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sign_extend
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/soc_top.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module soc_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/des_src/write_back_stage.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module write_back_stage
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_soc_top.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_soc_top
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+Command: launch_simulation -step elaborate -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Thu Sep 24 20:09:27 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_soc_top'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/iitm_bs/NAYA_KUCHH_TO/NAYA_KUCHH_TO.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/iitm_bs/NAYA_KUCHH_TO/NAYA_KUCHH_TO.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_soc_top_behav xil_defaultlib.tb_soc_top xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2025.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/AMDDesignTools/2025.2/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_soc_top_behav xil_defaultlib.tb_soc_top xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.qbit_loader
+Compiling module xil_defaultlib.mem_port_mux
+Compiling module xil_defaultlib.MUX_2_1
+Compiling module xil_defaultlib.Pc_Module
+Compiling module xil_defaultlib.inst_memory
+Compiling module xil_defaultlib.Pc_adder
+Compiling module xil_defaultlib.IF
+Compiling module xil_defaultlib.ALU_Decoder
+Compiling module xil_defaultlib.main_decoder
+Compiling module xil_defaultlib.control_unit_top
+Compiling module xil_defaultlib.registerfile
+Compiling module xil_defaultlib.sign_extend
+Compiling module xil_defaultlib.decode_stage
+Compiling module xil_defaultlib.mux_3_1
+Compiling module xil_defaultlib.ALU
+Compiling module xil_defaultlib.Adder
+Compiling module xil_defaultlib.Execute_stage
+Compiling module xil_defaultlib.jtsc_dmem
+Compiling module xil_defaultlib.data_mem_stage
+Compiling module xil_defaultlib.write_back_stage
+Compiling module xil_defaultlib.hazard_unit
+Compiling module xil_defaultlib.pipeline_top
+Compiling module xil_defaultlib.AXI_Manager
+Compiling module xil_defaultlib.SPRAM_1024x36
+Compiling module xil_defaultlib.AXI_RAM_Slave
+Compiling module xil_defaultlib.AXI_TOP
+Compiling module xil_defaultlib.soc_top
+Compiling module xil_defaultlib.tb_soc_top
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_soc_top_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '5' seconds
+Time resolution is 1 ps
+
+============================================================
+SOC PROGRAM LOAD
+Source  : program_image.svh
+Words   : 190
+Transfer: 16 qbits/word (2 bits per transfer)
+============================================================
+relaunch_sim: Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 2623.598 ; gain = 0.000
+run all
+Instruction load complete. Verifying SRAM contents...
+IMEM word0 : expected=10000a13 actual=10000a13
+IMEM word1 : expected=20000a93 actual=20000a93
+IMEM verification: PASS (190 words)
+
+============================================================
+RUNNING FULL SOC DIRECTED PROGRAM
+============================================================
+Completed DONE AXI write after 474 run cycles
+
+============================================================
+FINAL ARCHITECTURAL SCOREBOARD
+============================================================
+DONE AXI write: PASS
+
+============================================================
+MAIN DIRECTED SIGNATURE SCOREBOARD
+============================================================
+CONTROL NEGATIVE CHECK PASS             JAL wrong-path store addr=00000298 remains unwritten
+CONTROL NEGATIVE CHECK PASS            JALR wrong-path store addr=000002a0 remains unwritten
+
+============================================================
+CONSTRAINED EDGE-CASE SCOREBOARD
+============================================================
+1. Immediate boundary: -2048 and +2047
+2. Signed ADD wraparound
+3. Arithmetic right shift preserves sign
+4. SLT vs SLTU boundary
+5. Register shift amount 32 is masked to 5 bits
+6. x0 remains immutable
+7. SB byte lanes 0/1/2/3
+8. SH lower and upper halfword lanes
+9. LB/LBU sign vs zero extension
+10. LH/LHU sign vs zero extension
+11. Backward branch taken once, then not taken
+12. Signed overflow: 0x7fffffff + 1
+13. JALR link value and bit-0 clearing
+EDGE PASS           ADD signed wrap boundary addr=00000300 value=ffffffff
+EDGE PASS     SRA sign preservation shift-31 addr=00000304 value=ffffffff
+EDGE PASS                SLT signed boundary addr=00000308 value=00000001
+EDGE PASS             SLTU unsigned boundary addr=0000030c value=00000000
+EDGE PASS    Register shift amount mask (32) addr=00000310 value=00000001
+EDGE PASS                    x0 immutability addr=00000314 value=00000000
+EDGE PASS                  SB all byte lanes addr=00000318 value=aaaaaaaa
+EDGE PASS                  SH low/high lanes addr=0000031c value=beefbeef
+EDGE PASS                  LB sign extension addr=00000320 value=ffffff80
+EDGE PASS                 LBU zero extension addr=00000324 value=00000080
+EDGE PASS                  LH sign extension addr=00000328 value=ffff8001
+EDGE PASS                 LHU zero extension addr=0000032c value=00008001
+EDGE PASS    Backward branch taken/not-taken addr=00000330 value=00000000
+EDGE PASS               Signed overflow wrap addr=00000334 value=80000000
+EDGE PASS             JALR link + bit0 clear addr=00000338 value=000002d4
+EDGE PASS             ADDI minimum immediate addr=0000033c value=fffff800
+EDGE PASS             ADDI maximum immediate addr=00000340 value=000007ff
+EDGE-CASE PASS : 17
+EDGE-CASE FAIL : 0
+
+============================================================
+REFERENCE MODEL DIAGNOSTIC (NON-GATING)
+============================================================
+REFERENCE MODEL : reached completion
+Reference instructions executed : 180
+Reference final PC              : 000002f0
+NOTE: Reference-model results do not determine pass/fail.
+
+Fetched instructions observed : 451
+CPU read requests             : 16
+CPU write requests            : 69
+Main signature checks         : 40
+Edge-case checks              : 17
+Scoreboard PASS items         : 60
+Scoreboard ERROR items        : 0
+
+============================================================
+SOC DIRECTED TEST SUMMARY
+============================================================
+Load errors          : 0
+Fetch monitor errors : 0
+Control errors       : 0
+Forwarding errors    : 0
+Transport errors     : 0
+AXI response errors  : 0
+Assertion failures   : 0
+Edge-case errors     : 0
+Scoreboard errors    : 0
+============================================================
+******** FULL SOC DIRECTED TEST : PASS ********
+$finish called at time : 67655 ns : File "C:/iitm_bs/scl_tsc/soc_verif_env_tb/soc_directed_tb/tb/tb_soc_top.sv" Line 199
